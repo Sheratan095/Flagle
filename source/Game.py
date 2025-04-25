@@ -26,15 +26,25 @@ class FlagleGame:
 
 		if (self.__current_country.name == guess_name):
 			return (self._generate_guess_result(True, True, guess_name))
-		
+
 		print("Guess: " + guess_name + " is wrong")
+
+
+		guess_country : Country = self.__countriesManger.get_country_by_name(guess_name)
+
+		# if the country is not found, return a special result
+		if (guess_country == None):
+			return (GuessResult(
+				tries=self.__tries,
+				unknown_country=True
+			))
 
 		self.__tries += 1
 
-		return (self._generate_guess_result(False, self.__tries == self.__max_tries, guess_name))
+		return (self._generate_guess_result(False, self.__tries == self.__max_tries, guess_country))
 
 
-	def _generate_guess_result(self, win : bool, game_end : bool, guess_name : string) -> GuessResult:
+	def _generate_guess_result(self, win : bool, game_end : bool, guess_country : Country) -> GuessResult:
 		# if the game is over, generate the result image
 		if (game_end == True):
 			return (GuessResult(
@@ -49,20 +59,20 @@ class FlagleGame:
 			game_end=game_end,
 			win=win,
 			tries=self.__tries,
-			result_image=self._generate_combined_image(guess_name)
+			result_image=self._generate_combined_image(guess_country)
 		))
 
-	def _generate_combined_image(self, guess_name : string) -> Image:
-		# generate a random country
-		# self.__current_country = self._get_random_country()
 
-		# open the image
-		image = Image.open(self.__current_country.flag)
+	def _generate_combined_image(self, guess_country : Country) -> Image:
 
-		# resize the image to 200x200
-		# image = image.resize((200, 200))
+		result_image : Image
 
-		return (image)
+		target_image = Image.open(self.__current_country.flag)
+		guess_image = Image.open(guess_country.flag)
+
+
+		return (guess_image)
+
 
 	def _get_random_country(self) -> Country:
 

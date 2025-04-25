@@ -45,4 +45,12 @@ class CountriesManager:
 	def print_countries(self):
 		for country in self.__countries:
 			print(country)
+	
+	def get_country_by_name(self, name: str) -> Country:
+
+		for country in self.__countries:
+			if (country.name == name):
+				return (country)
+
+		return (None)
 		

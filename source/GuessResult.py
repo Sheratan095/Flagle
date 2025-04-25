@@ -3,7 +3,8 @@ from PIL import Image
 
 @dataclass
 class GuessResult:
-	game_end : bool
-	win : bool
-	tries : int
-	result_image :Image
+	game_end : bool = False
+	win : bool = False
+	tries : int = 0
+	result_image :Image = None
+	unknown_country : bool = False

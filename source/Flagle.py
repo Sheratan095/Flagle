@@ -10,7 +10,6 @@ game.start_game(mode)
 
 # Make a guess
 result: GuessResult = game.guess("Germany")
-result: GuessResult = game.guess("Italy")
 
 # Convert PIL image to QPixmap
 def pil_to_qpixmap(pil_image):

@@ -1,5 +1,5 @@
 import json
-from FlagleGame import FlagleGame
+from Game import FlagleGame
 from GameMode import GameMode
 
 mode : GameMode = GameMode.World

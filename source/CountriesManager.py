@@ -1,9 +1,12 @@
 from Country import Country
 import json
+import random
 
-class Countries:
+class CountriesManager:
+
 	def __init__(self):
-		self.countries : list[Country] = []
+		# __ make it private
+		self.__countries : list[Country] = []
 
 	def load_from_json(self, filename: str):
 		with open(filename, "r") as file:
@@ -18,9 +21,12 @@ class Countries:
 					name=entry["name"]
 				)
 
-				self.countries.append(country)
+				self.__countries.append(country)
+
+	def get_random_country(self):
+		return (random.choice(self.__countries))
 
 	def print_countries(self):
-		for country in self.countries:
+		for country in self.__countries:
 			print(country)
 		

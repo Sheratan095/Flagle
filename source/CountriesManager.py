@@ -23,7 +23,7 @@ class CountriesManager:
 		# clear the list of countries , usefull when the game mode is changed in run time
 		self.__countries.clear()
 
-		with open(game_mode.value, "r") as file:
+		with open(self.__current_game_mode, "r") as file:
 
 			data = json.load(file)
 

@@ -11,7 +11,7 @@ class Country:
 		self.name = name
 
 		# preload the image
-		self.image = get_standardized_image(flag)
+		self.image = Image.open(flag)
 
 	def __repr__(self):
 		# This provides a nice string representation of the object

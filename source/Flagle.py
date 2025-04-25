@@ -2,6 +2,8 @@ from globals import *
 from GuessResult import GuessResult
 from PyQt5.QtWidgets import QApplication, QLabel
 from PyQt5.QtGui import QPixmap, QImage
+from PIL import Image
+
 import sys
 import io
 

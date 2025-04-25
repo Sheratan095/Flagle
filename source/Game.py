@@ -59,7 +59,7 @@ class FlagleGame:
 			game_end=game_end,
 			win=win,
 			tries=self.__tries,
-			result_image=generate_combined_image(self.__current_country, guess_country)
+			result_image=generate_combined_image(self.__current_country.image, guess_country.image)
 		))
 
 

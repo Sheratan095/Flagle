@@ -1,4 +1,5 @@
 from PIL import Image
+from image_utils import *
 
 class Country:
 
@@ -10,7 +11,7 @@ class Country:
 		self.name = name
 
 		# preload the image
-		self.image = Image.open(flag)
+		self.image = get_standardized_image(flag)
 
 	def __repr__(self):
 		# This provides a nice string representation of the object

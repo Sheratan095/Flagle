@@ -3,6 +3,7 @@ from GameMode import GameMode
 from Country import Country
 from GuessResult import GuessResult
 from PIL import Image
+from image_utils import *
 import string
 
 class FlagleGame:
@@ -59,19 +60,8 @@ class FlagleGame:
 			game_end=game_end,
 			win=win,
 			tries=self.__tries,
-			result_image=self._generate_combined_image(guess_country)
+			result_image=generate_combined_image(self.__current_country.flag, guess_country.flag)
 		))
-
-
-	def _generate_combined_image(self, guess_country : Country) -> Image:
-
-		result_image : Image
-
-		target_image = Image.open(self.__current_country.flag)
-		guess_image = Image.open(guess_country.flag)
-
-
-		return (guess_image)
 
 
 	def _get_random_country(self) -> Country:

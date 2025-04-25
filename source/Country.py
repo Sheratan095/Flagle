@@ -15,7 +15,7 @@ class Country:
 
 	def __repr__(self):
 		# This provides a nice string representation of the object
-		return f"Country(name={self.name}, latitude={self.latitude}, longitude={self.longitude}, flag={self.__flag})"
+		return f"Country(name={self.name}, latitude={self.latitude}, longitude={self.longitude}, flag={self.__flag}, height={self.image.height}, width={self.image.width})"
 
 	def __eq__(self, other):
 

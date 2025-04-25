@@ -39,6 +39,9 @@ class CountriesManager:
 
 				self.__countries.append(country)
 
+		self.print_countries()
+
+
 	def get_random_country(self):
 		return (random.choice(self.__countries))
 

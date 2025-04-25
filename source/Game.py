@@ -19,12 +19,15 @@ class FlagleGame:
 		self.__tries : int = 0
 		self._get_random_country()
 
-		print("Game started \n" + str(self.__current_country.name))
+		print("Game started \nTarget country is: " + str(self.__current_country.name))
+
 
 	def guess(self, guess_name: string) -> GuessResult:
 
-		if (self.__last_country_name.name == guess_name):
+		if (self.__current_country.name == guess_name):
 			return (self._generate_guess_result(True, True, guess_name))
+		
+		print("Guess: " + guess_name + " is wrong")
 
 		self.__tries += 1
 
@@ -46,7 +49,7 @@ class FlagleGame:
 			game_end=game_end,
 			win=win,
 			tries=self.__tries,
-			result_image=self._generate_combined_image()
+			result_image=self._generate_combined_image(guess_name)
 		))
 
 	def _generate_combined_image(self, guess_name : string) -> Image:

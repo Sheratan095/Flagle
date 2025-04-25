@@ -2,6 +2,7 @@ from Country import Country
 from GameMode import GameMode
 import json
 import random
+import os
 
 class CountriesManager:
 
@@ -30,7 +31,7 @@ class CountriesManager:
 			# for each entry in the json file, create a new country object and add it to the list
 			for entry in data:
 				country = Country(
-					flag=entry["flag"],
+					flag= os.path.splitext(self.__current_game_mode)[0] + "/" + entry["flag"],
 					latitude=entry["latitude"],
 					longitude=entry["longitude"],
 					name=entry["name"]

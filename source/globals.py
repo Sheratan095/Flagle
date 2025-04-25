@@ -10,5 +10,3 @@ with open("config.json", "r") as file:
 	data = json.load(file)
 
 	countries.load_from_json(mode.value)
-
-countries.print_countries()

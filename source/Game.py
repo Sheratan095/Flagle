@@ -2,7 +2,6 @@ from CountriesManager import CountriesManager
 from GameMode import GameMode
 from Country import Country
 from GuessResult import GuessResult
-from PIL import Image
 from image_utils import *
 import string
 

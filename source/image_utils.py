@@ -1,6 +1,5 @@
 from PIL import Image
 from Country import Country
-import string
 
 def generate_combined_image(target_country : Country, guess_country : Country) -> Image:
 

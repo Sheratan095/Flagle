@@ -2,16 +2,12 @@ from PIL import Image
 from Country import Country
 import string
 
-def generate_combined_image(target_country_path : string, guess_country_path : string) -> Image:
+def generate_combined_image(target_country : Country, guess_country : Country) -> Image:
 
 	result_image : Image
 
 
-	target_image = Image.open(target_country_path)
-	guess_image = Image.open(guess_country_path)
-
-
-	return (guess_image)
+	return (target_country.image)
 
 def get_image_aspect_ratio(image: Image) -> float:
 

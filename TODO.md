@@ -1,0 +1,1 @@
+[] add the option to disable preload the image and load it just when it's called

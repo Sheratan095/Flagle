@@ -52,7 +52,7 @@ class FlagleGame:
 				game_end=game_end,
 				win=win,
 				tries=self.__tries,
-				result_image=Image.open(self.__current_country.flag)
+				result_image=self.__current_country.image
 			))
 
 		# if the game is not over, generate the resulting image
@@ -60,7 +60,7 @@ class FlagleGame:
 			game_end=game_end,
 			win=win,
 			tries=self.__tries,
-			result_image=generate_combined_image(self.__current_country.flag, guess_country.flag)
+			result_image=generate_combined_image(self.__current_country, guess_country)
 		))
 
 

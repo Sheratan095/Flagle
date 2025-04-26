@@ -1,5 +1,6 @@
 from Country import Country
 from GameMode import GameMode
+import globals  # Ensure the globals module is imported
 import json
 import random
 import os
@@ -38,12 +39,28 @@ class CountriesManager:
 				)
 
 				self.__countries.append(country)
+		
+		self._get_max_dimensions()
 
-		self.print_countries()
+	def _get_max_dimensions(self):
+		max_w = 0
+		max_h = 0
+
+		# find the max width and height of the images
+		for country in self.__countries:
+			if (country.get_img_width() > max_w):
+				max_w = country.get_img_width()
+			if (country.get_img_height() > max_h):
+				max_h = country.get_img_height()
+
+		# Correctly reference the globals module
+		globals.max_width = max_w
+		globals.max_height = max_h
 
 
 	def get_random_country(self):
 		return (random.choice(self.__countries))
+
 
 	def print_countries(self):
 		for country in self.__countries:
@@ -56,4 +73,3 @@ class CountriesManager:
 				return (country)
 
 		return (None)
-		

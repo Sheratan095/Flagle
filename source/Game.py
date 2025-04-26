@@ -11,6 +11,7 @@ class FlagleGame:
 		self.__countriesManger : CountriesManager = CountriesManager()
 		self.__current_country : Country = None
 		self.__max_tries : int = max_tries
+		self.__current_suggestion_image : Image = None
 
 
 	def start_game(self, game_mode: GameMode):
@@ -54,12 +55,15 @@ class FlagleGame:
 				result_image=self.__current_country.image
 			))
 
+		new_suggestion_image : Image = generate_combined_image(self.__current_country.image, guess_country.image, self.__current_suggestion_image)
+		self.__current_suggestion_image = new_suggestion_image
+
 		# if the game is not over, generate the resulting image
 		return (GuessResult(
 			game_end=game_end,
 			win=win,
 			tries=self.__tries,
-			result_image=generate_combined_image(self.__current_country.image, guess_country.image)
+			result_image=new_suggestion_image
 		))
 
 

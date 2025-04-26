@@ -4,7 +4,10 @@ from GameMode import GameMode
 
 mode : GameMode = GameMode.World
 
-number_of_tries = 5
+number_of_tries : int = 5
+
+max_width : int = 0
+max_height : int = 0
 
 with open("config.json", "r") as file:
 

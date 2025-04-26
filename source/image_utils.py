@@ -11,20 +11,41 @@ def generate_combined_image(target_country : Image, guess_country : Image, curre
 		result_image = Image.new('RGBA', (globals.max_width, globals.max_height))
 
 	print(f"{globals.max_width} {globals.max_height}")
+	print(f"{result_image.width} {result_image.height}")
+
+	if (target_country.size > guess_country.size):
+		biggest_img = target_country
+		smallest_img = guess_country
+	else :
+		biggest_img = guess_country
+		smallest_img = target_country
 
 	# Access pixel map
 	dest_pixels = result_image.load()
-	target_pixels = target_country.load()
-	guess_pixels = guess_country.load()
+	biggest_pixels = biggest_img.load()
+	smallest_pixels = smallest_img.load()
 
-	for x in range(globals.max_width):
-		for y in range(globals.max_height):
-			if (is_index_valid(target_country, x, y) and is_index_valid(guess_country, x, y)):
-				if pixels_are_close(target_pixels[x, y], guess_pixels[x, y]):
-					dest_pixels[x, y] = target_pixels[x, y]	# If the pixels are the same, set the pixel to the target pixel
+	starting_y : int = (biggest_img.height - smallest_img.height) // 2
 
-	result_image.save('output_with_transparency.png')
+	# Draw a square around the point (100, 100)
+	square_size = 10  # Size of the square (half-length of each side)
+	center_x, center_y = 1000, 410
 
+	for y in range(center_y - square_size, center_y + square_size + 1):
+		for x in range(center_x - square_size, center_x + square_size + 1):
+			if is_index_valid(result_image, x, y):
+				dest_pixels[x, y] = (255, 0, 0, 255)  # Red color with full opacity
+
+	# print(f"Starting y: {starting_y}")
+	# print(f"Smallest img height: {smallest_img.height}")
+	# print(f"Biggest img height: {biggest_img.height}")
+	# print(f"difference: {biggest_img.height - smallest_img.height}")
+
+	# for y in range(smallest_img.height):
+	# 	for x in range(smallest_img.width):
+	# 		if (is_index_valid(biggest_img, x, y + starting_y) and is_index_valid(smallest_img, x, y)):
+	# 			if (pixels_are_close(biggest_pixels[x, y + starting_y], smallest_pixels[x, y])):
+	# 				dest_pixels[x, y + starting_y] = biggest_pixels[x, y + starting_y]
 
 	return (result_image)
 

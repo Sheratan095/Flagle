@@ -59,6 +59,9 @@ class CountriesManager:
 
 
 	def get_random_country(self):
+		if (globals.testing == True):
+			# if the game is in testing mode, return the first country
+			return (self.get_country_by_name(globals.testing_nation))
 		return (random.choice(self.__countries))
 
 

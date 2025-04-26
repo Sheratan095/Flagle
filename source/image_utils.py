@@ -6,26 +6,33 @@ def generate_combined_image(target_country : Image, guess_country : Image, curre
 
 	result_image : Image
 	if (current_suggestion_image != None):
-		result_image = current_suggestion_image
+		result_image = current_suggestion_image.copy()
 	else :
 		result_image = Image.new('RGBA', (globals.max_width, globals.max_height))
 
 	print(f"{globals.max_width} {globals.max_height}")
 
 	# Access pixel map
-	pixels = result_image.load()
+	dest_pixels = result_image.load()
+	target_pixels = target_country.load()
+	guess_pixels = guess_country.load()
 
-	pixels[1000, 1000] = (255, 255, 255, 0)  # Set a pixel to white
-	if (is_index_valid(result_image, 1000, 1000)):
-		print("added")
-		print(pixels[1000, 1000])  # Print the pixel value
+	for x in range(globals.max_width):
+		for y in range(globals.max_height):
+			if (is_index_valid(target_country, x, y) and is_index_valid(guess_country, x, y)):
+				if (target_pixels[x, y] == guess_pixels[x, y]):
+					# If the pixels are the same, set the pixel to the target pixel
+					dest_pixels[x, y] = target_pixels[x, y]
+
+	result_image.save('output_with_transparency.png')
+
 
 	return (result_image)
 
 def is_index_valid(img : Image, x: int, y: int) -> bool:
 	if (x < 0 or y < 0):
 		return (False)
-	if (x > img.width or y > img.height):
+	if (x >= img.width or y >= img.height):
 		return (False)
 	return (True)
 

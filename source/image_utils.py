@@ -20,14 +20,17 @@ def generate_combined_image(target_country : Image, guess_country : Image, curre
 	for x in range(globals.max_width):
 		for y in range(globals.max_height):
 			if (is_index_valid(target_country, x, y) and is_index_valid(guess_country, x, y)):
-				if (target_pixels[x, y] == guess_pixels[x, y]):
-					# If the pixels are the same, set the pixel to the target pixel
-					dest_pixels[x, y] = target_pixels[x, y]
+				if pixels_are_close(target_pixels[x, y], guess_pixels[x, y]):
+					dest_pixels[x, y] = target_pixels[x, y]	# If the pixels are the same, set the pixel to the target pixel
 
 	result_image.save('output_with_transparency.png')
 
 
 	return (result_image)
+
+def pixels_are_close(p1, p2) -> bool:
+	# Compare only R, G, B (ignore alpha for now)
+	return all(abs(a - b) <= globals.color_tollerance for a, b in zip(p1[:3], p2[:3]))
 
 def is_index_valid(img : Image, x: int, y: int) -> bool:
 	if (x < 0 or y < 0):

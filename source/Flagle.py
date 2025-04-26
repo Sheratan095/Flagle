@@ -10,9 +10,6 @@ import io
 # Start the game
 game.start_game(mode)
 
-# Make a guess
-result: GuessResult = game.guess("Germany")
-
 # Convert PIL image to QPixmap
 def pil_to_qpixmap(pil_image):
 	buffer = io.BytesIO()
@@ -23,8 +20,22 @@ def pil_to_qpixmap(pil_image):
 # Create Qt Application
 app = QApplication(sys.argv)
 label = QLabel()
-pixmap = pil_to_qpixmap(result.result_image)
-label.setPixmap(pixmap)
-label.show()
 
-sys.exit(app.exec_())
+# Set the background color of the main window
+label.setStyleSheet("background-color: black;")
+
+while True:
+    user_input = input("Enter your guess (type 'q' to quit): ")
+    if user_input.lower() == 'q':
+        print("Exiting the game.")
+        break
+
+    # Make a guess
+    result: GuessResult = game.guess(user_input)
+
+    # Update the image
+    pixmap = pil_to_qpixmap(result.result_image)
+    label.setPixmap(pixmap)
+    label.show()
+    app.processEvents()  # Process Qt events to update the GUI
+

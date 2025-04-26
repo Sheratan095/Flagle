@@ -12,6 +12,7 @@ class Country:
 
 		# preload the image
 		self.image = Image.open(flag)
+		self.image = self.image.convert('RGBA')
 		# self.image = self.image.resize((1280, 800))  # Correct usage of resize
 
 

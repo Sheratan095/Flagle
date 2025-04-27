@@ -4,9 +4,6 @@ import globals
 from Gui.Input import Input
 from Gui.InputManager import InputManager
 
-# Initialize InputManager
-input_manager = InputManager()
-
 window = Tk()
 
 window.geometry("300x700")
@@ -31,12 +28,15 @@ geometry.render_geometry(canvas)
 
 
 #main image
-image_image_7 = PhotoImage(file="assets/image_7.png")
+# image_image_7 = PhotoImage(file="assets/image_7.png")
 image_7 = canvas.create_image(
 	149.0,
 	109.0,
-	image=image_image_7
+	image=None
 )
+
+input_manager = InputManager(image_7, canvas)
+
 
 #inptut field
 # entry_image_1 = PhotoImage(

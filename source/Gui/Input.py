@@ -12,10 +12,8 @@ class Input:
 		# Convert PIL image to Tkinter PhotoImage
 		image = guessed_country.image.resize((38, 25))  # Resize the image
 		self._tk_image = ImageTk.PhotoImage(image)  # Store the reference
-		self._canvas.itemconfig(self._text_id, text=guessed_country.name)
 		self._canvas.itemconfig(self._image_id, image=self._tk_image)  # Update the text item with the image
-		# self._canvas.delete(self._image_id)  # Use the stored reference
-		# self._image_id = self._canvas.create_image(245.0, 237.0, image=self._tk_image, tags="image")
+		self._canvas.itemconfig(self._text_id, text=guessed_country.name)
 
 	def clear(self):
 		self._canvas.itemconfig(self._text_id, text="")

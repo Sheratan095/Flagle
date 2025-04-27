@@ -15,7 +15,7 @@ color_tollerance : int = 40
 max_width : int = 0
 max_height : int = 0
 
-with open("config.json", "r") as file:
+with open("../config.json", "r") as file:
 
 	data = json.load(file)
 

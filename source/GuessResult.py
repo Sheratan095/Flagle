@@ -4,6 +4,7 @@ import MergeResult
 @dataclass
 class GuessResult:
 	game_end : bool = False
+	guessed_country : str = ""
 	win : bool = False
 	tries : int = 0
 	merge_result :MergeResult = None

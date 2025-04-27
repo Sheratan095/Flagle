@@ -8,6 +8,7 @@
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 import Gui.render_geometry as geometry # Adjusted to use a relative import
 import globals
+# from Gui.InputManager import InputManager  # Import InputManager
 
 window = Tk()
 
@@ -31,16 +32,17 @@ canvas.place(x = 0, y = 0)
 
 geometry.render_geometry(canvas)
 
-canvas.create_text(
-    90.0,
-    666.0,
-    anchor="nw",
-    text="FLAGLE ",
-    fill="#FFFFFF",
-    font=("Inter Bold", 30 * -1)
+
+
+#main image
+image_image_7 = PhotoImage(file="assets/image_7.png")
+image_7 = canvas.create_image(
+    149.0,
+    109.0,
+    image=image_image_7
 )
 
-
+#inptut field
 entry_image_1 = PhotoImage(
     file="assets/entry_1.png")
 entry_bg_1 = canvas.create_image(
@@ -62,18 +64,8 @@ entry_1.place(
 )
 
 
-
-canvas.create_text(
-    32.0,
-    534.0,
-    anchor="nw",
-    text="Sixth try",
-    fill=globals.border_color,
-    font=("Inter Bold", 15 * -1)
-)
-
-button_image_1 = PhotoImage(
-    file="assets/button_1.png")
+#BUTTON
+button_image_1 = PhotoImage(file="assets/button_1.png")
 button_1 = Button(
     image=button_image_1,
     borderwidth=0,
@@ -88,17 +80,36 @@ button_1.place(
     height=29.0
 )
 
-image_image_1 = PhotoImage(
-    file="assets/image_1.png")
-image_1 = canvas.create_image(
-    245.0,
-    542.0,
-    image=image_image_1
+canvas.create_text(
+    90.0,
+    666.0,
+    anchor="nw",
+    text="FLAGLE ",
+    fill="#FFFFFF",
+    font=("Inter Bold", 30 * -1)
 )
 
 
 
-canvas.create_text(
+sixth_try:int = canvas.create_text(
+    32.0,
+    534.0,
+    anchor="nw",
+    text="Sixth try",
+    fill=globals.border_color,
+    font=("Inter Bold", 15 * -1)
+)
+
+sixth_img = PhotoImage(file="assets/image_1.png")
+sixth_img_idx = canvas.create_image(
+    245.0,
+    542.0,
+    image=sixth_img
+)
+
+
+
+fifth_idx : int = canvas.create_text(
     32.0,
     473.0,
     anchor="nw",
@@ -107,17 +118,17 @@ canvas.create_text(
     font=("Inter Bold", 15 * -1)
 )
 
-image_image_2 = PhotoImage(
-    file="assets/image_2.png")
-image_2 = canvas.create_image(
+# FIFTH TRY
+fifth_img = PhotoImage(file="assets/image_2.png")
+fifth_img_idx = canvas.create_image(
     245.0,
     481.0,
-    image=image_image_2
+    image=fifth_img
 )
 
 
 
-canvas.create_text(
+fourth_idx = canvas.create_text(
     32.0,
     412.0,
     anchor="nw",
@@ -126,16 +137,15 @@ canvas.create_text(
     font=("Inter Bold", 15 * -1)
 )
 
-image_image_3 = PhotoImage(
-    file="assets/image_3.png")
-image_3 = canvas.create_image(
+fourth_img = PhotoImage(file="assets/image_3.png")
+fourth_img_idx = canvas.create_image(
     245.0,
     420.0,
-    image=image_image_3
+    image=fourth_img
 )
 
 
-canvas.create_text(
+third_idx = canvas.create_text(
     32.0,
     351.0,
     anchor="nw",
@@ -144,17 +154,16 @@ canvas.create_text(
     font=("Inter Bold", 15 * -1)
 )
 
-image_image_4 = PhotoImage(
-    file="assets/image_4.png")
-image_4 = canvas.create_image(
+third_img = PhotoImage(file="assets/image_4.png")
+third_img_idx = canvas.create_image(
     245.0,
     359.0,
-    image=image_image_4
+    image=third_img
 )
 
 
 
-canvas.create_text(
+second_idx : int = canvas.create_text(
     32.0,
     290.0,
     anchor="nw",
@@ -163,17 +172,16 @@ canvas.create_text(
     font=("Inter Bold", 15 * -1)
 )
 
-image_image_5 = PhotoImage(
-    file="assets/image_5.png")
-image_5 = canvas.create_image(
+second_img = PhotoImage(file="assets/image_5.png")
+second_img_idx = canvas.create_image(
     245.0,
     298.0,
-    image=image_image_5
+    image=second_img
 )
 
 
 
-canvas.create_text(
+first_idx: int = canvas.create_text(
     31.0,
     229.0,
     anchor="nw",
@@ -182,21 +190,11 @@ canvas.create_text(
     font=("Inter Bold", 15 * -1)
 )
 
-image_image_6 = PhotoImage(
-    file="assets/image_6.png")
-image_6 = canvas.create_image(
+first_img= PhotoImage(file="assets/image_6.png")
+first_img_idx = canvas.create_image(
     245.0,
     237.0,
-    image=image_image_6
+    image=first_img
 )
 
-image_image_7 = PhotoImage(
-    file="assets/image_7.png")
-image_7 = canvas.create_image(
-    149.0,
-    109.0,
-    image=image_image_7
-)
 
-# Start the Tkinter main loop
-# window.mainloop()

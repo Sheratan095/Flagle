@@ -11,8 +11,7 @@ window = Tk()
 
 window.geometry("300x700")
 window.configure(bg = globals.background_color)
-
-
+window.title("Flagle")
 window.resizable(False, False)
 
 canvas = Canvas(
@@ -74,7 +73,7 @@ button_1 = Button(
 	bg=globals.background_color,
 	highlightthickness=0,
 	command=lambda: on_button_click(),
-	# relief="flat"
+	relief="flat"
 )
 button_1.place(
 	x=235.0,

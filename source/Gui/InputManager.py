@@ -1,12 +1,13 @@
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
-import Gui.Input
+from Gui.Input import Input
 import MergeResult
 import GuessResult
+from typing import List
 
 class InputManager:
 
 	def __init__(self):
-		self._inputs = None
+		self._inputs : List[Input] = []
 		self._current_idx = 0
 
 	def add_input(self, input : Input):

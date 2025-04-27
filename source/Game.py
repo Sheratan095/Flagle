@@ -55,15 +55,15 @@ class FlagleGame:
 				result_image=self.__current_country.image
 			))
 
-		new_suggestion_image : Image = generate_combined_image(self.__current_country.image, guess_country.image, self.__current_suggestion_image)
-		self.__current_suggestion_image = new_suggestion_image
+		marge_resutlt : MergeResult = merge_images(self.__current_country.image, guess_country.image, self.__current_suggestion_image)
+		self.__current_suggestion_image = marge_resutlt.result_image
 
 		# if the game is not over, generate the resulting image
 		return (GuessResult(
 			game_end=game_end,
 			win=win,
 			tries=self.__tries,
-			result_image=new_suggestion_image
+			merge_result=marge_resutlt
 		))
 
 

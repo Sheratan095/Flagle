@@ -37,7 +37,8 @@ while True:
 	result: GuessResult = globals.game.guess(user_input)
 
 	# Update the image
-	pixmap = pil_to_qpixmap(result.result_image)
+	pixmap = pil_to_qpixmap(result.merge_result.result_image)
+	print(f"Match percentage: {result.merge_result.percentage}%")
 	label.setPixmap(pixmap)
 	label.show()
 	app.processEvents()  # Process Qt events to update the GUI

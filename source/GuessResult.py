@@ -1,10 +1,10 @@
 from dataclasses import dataclass
-from PIL import Image
+import MergeResult
 
 @dataclass
 class GuessResult:
 	game_end : bool = False
 	win : bool = False
 	tries : int = 0
-	result_image :Image = None
+	merge_result :MergeResult = None
 	unknown_country : bool = False

@@ -7,7 +7,8 @@ mode : GameMode = GameMode.World
 number_of_tries : int = 5
 
 testing : bool = True
-testing_nation : str = "Seychelles"
+testing_nation : str = "Nepal"
+background_color : tuple = (0, 0, 0, 0)
 
 color_tollerance : int = 40
 

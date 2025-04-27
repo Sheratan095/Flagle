@@ -26,7 +26,6 @@ label.resize(globals.max_width, globals.max_height)
 label.setStyleSheet("background-color: black;")
 
 # Set the initial size of the window
-label.resize(800, 600)  # Width: 800px, Height: 600px
 
 while True:
 	user_input = input("Enter your guess (type 'q' to quit): ")

@@ -46,13 +46,13 @@ image_7 = canvas.create_image(
 #     621.0,
 #     image=entry_image_1
 # )
-entry_1 = Entry(
+input = Entry(
 	bd=0,
 	bg=globals.background_color,
 	fg=globals.input_color,
 	highlightthickness=0
 )
-entry_1.place(
+input.place(
 	x=32.0,
 	y=606.0,
 	width=179.0,
@@ -61,12 +61,16 @@ entry_1.place(
 
 def on_button_click():
 	print("Button clicked")
-	if (entry_1.get() == ""):
+	if (input.get() == ""):
 		return
-	input_manager.guess(entry_1.get())
+	input_manager.guess(input.get())
 
 #BUTTON
-button_image_1 = PhotoImage(file="assets/btn.png", height=29, width=29)
+from PIL import Image, ImageTk
+
+image = Image.open("assets/btn.png")
+
+button_image_1 =  ImageTk.PhotoImage(image.resize((24, 24)))
 button_1 = Button(
 	image=button_image_1,
 	borderwidth=0,
@@ -75,9 +79,10 @@ button_1 = Button(
 	command=lambda: on_button_click(),
 	relief="flat"
 )
+#y: same of input
 button_1.place(
 	x=235.0,
-	y=605.0,
+	y=606.0,
 	width=29.0,
 	height=29.0
 )

@@ -45,7 +45,7 @@ canvas.create_rectangle(
     291.00354766845703,
     696.0,
     fill=bg_color,
-    outline="")
+    outline="#fc0303")
 
 # Guess
 canvas.create_rectangle(

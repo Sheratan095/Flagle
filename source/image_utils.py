@@ -12,7 +12,7 @@ def merge_images(target_country : Image, guess_country : Image, current_suggesti
 	if (current_suggestion_image != None):
 		result_image = current_suggestion_image.copy()
 	else :
-		result_image = Image.new('RGBA', (globals.max_width, globals.max_height), globals.background_color)
+		result_image = Image.new('RGBA', (globals.max_width, globals.max_height), globals.trasparent)
 
 	# Access pixel map
 	dest_pixels = result_image.load()
@@ -25,7 +25,7 @@ def merge_images(target_country : Image, guess_country : Image, current_suggesti
 				if (pixels_are_close(guess_pixels[x, y], target_pixels[x, y])):
 					match_pixels += 1
 					dest_pixels[x, y] = target_pixels[x, y]
-				# elif (dest_pixels[x, y] != globals.background_color):
+				# elif (dest_pixels[x, y] != globals.trasparent):
 				# 	match_pixels += 1
 	# result_image.save("result.png")
 

@@ -67,17 +67,18 @@ def on_button_click():
 	input_manager.guess(entry_1.get())
 
 #BUTTON
-button_image_1 = PhotoImage(file="assets/button_1.png")
+button_image_1 = PhotoImage(file="assets/btn.png", height=29, width=29)
 button_1 = Button(
 	image=button_image_1,
 	borderwidth=0,
+	bg=globals.background_color,
 	highlightthickness=0,
 	command=lambda: on_button_click(),
-	relief="flat"
+	# relief="flat"
 )
 button_1.place(
 	x=235.0,
-	y=606.0,
+	y=605.0,
 	width=29.0,
 	height=29.0
 )
@@ -102,11 +103,11 @@ sixth_try:int = canvas.create_text(
 	font=("Inter Bold", 15 * -1)
 )
 
-sixth_img = PhotoImage(file="assets/image_1.png")
+# sixth_img = PhotoImage(file="assets/image_1.png")
 sixth_img_idx = canvas.create_image(
 	245.0,
 	542.0,
-	image=sixth_img
+	image=None
 )
 
 
@@ -121,11 +122,11 @@ fifth_idx : int = canvas.create_text(
 )
 
 # FIFTH TRY
-fifth_img = PhotoImage(file="assets/image_2.png")
+# fifth_img = PhotoImage(file="assets/image_2.png")
 fifth_img_idx = canvas.create_image(
 	245.0,
 	481.0,
-	image=fifth_img
+	image=None
 )
 
 
@@ -139,11 +140,11 @@ fourth_idx = canvas.create_text(
 	font=("Inter Bold", 15 * -1)
 )
 
-fourth_img = PhotoImage(file="assets/image_3.png")
+# fourth_img = PhotoImage(file="assets/image_3.png")
 fourth_img_idx = canvas.create_image(
 	245.0,
 	420.0,
-	image=fourth_img
+	image=None
 )
 
 
@@ -156,11 +157,11 @@ third_idx = canvas.create_text(
 	font=("Inter Bold", 15 * -1)
 )
 
-third_img = PhotoImage(file="assets/image_4.png")
+# third_img = PhotoImage(file="assets/image_4.png")
 third_img_idx = canvas.create_image(
 	245.0,
 	359.0,
-	image=third_img
+	image=None
 )
 
 
@@ -174,11 +175,11 @@ second_idx : int = canvas.create_text(
 	font=("Inter Bold", 15 * -1)
 )
 
-second_img = PhotoImage(file="assets/image_5.png")
+# second_img = PhotoImage(file="assets/image_5.png")
 second_img_idx = canvas.create_image(
 	245.0,
 	298.0,
-	image=second_img
+	image=None
 )
 
 
@@ -192,11 +193,11 @@ first_idx: int = canvas.create_text(
 	font=("Inter Bold", 15 * -1)
 )
 
-first_img= PhotoImage(file="assets/image_6.png")
+# first_img= PhotoImage(file="assets/image_6.png")
 first_img_idx = canvas.create_image(
 	245.0,
 	237.0,
-	image=first_img
+	image=None
 )
 
 

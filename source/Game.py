@@ -52,7 +52,7 @@ class FlagleGame:
 				game_end=game_end,
 				win=win,
 				tries=self.__tries,
-				result_image=self.__current_country.image
+				merge_result=MergeResult(self.__current_country.image, 100.0)
 			))
 
 		marge_resutlt : MergeResult = merge_images(self.__current_country.image, guess_country.image, self.__current_suggestion_image)

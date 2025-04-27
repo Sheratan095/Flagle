@@ -1,9 +1,10 @@
 from PIL import Image
 from image_utils import *
+import string
 
 class Country:
 
-	def __init__(self, flag, latitude, longitude, name):
+	def __init__(self, flag, name :string, latitude = 0, longitude = 0):
 
 		self.__flag = flag
 		self.latitude = latitude

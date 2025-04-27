@@ -33,8 +33,8 @@ class CountriesManager:
 			for entry in data:
 				country = Country(
 					flag= os.path.splitext(self.__current_game_mode)[0] + "/" + entry["flag"],
-					latitude=entry["latitude"],
-					longitude=entry["longitude"],
+					# latitude=entry["latitude"],
+					# longitude=entry["longitude"],
 					name=entry["name"]
 				)
 

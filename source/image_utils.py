@@ -47,6 +47,8 @@ def generate_combined_image(target_country : Image, guess_country : Image, curre
 	# 			if (pixels_are_close(biggest_pixels[x, y + starting_y], smallest_pixels[x, y])):
 	# 				dest_pixels[x, y + starting_y] = biggest_pixels[x, y + starting_y]
 
+	result_image.save("result.png")
+
 	return (result_image)
 
 def pixels_are_close(p1, p2) -> bool:

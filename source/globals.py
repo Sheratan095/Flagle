@@ -20,7 +20,10 @@ max_height : int = 0
 background_color : string =  "#1D2951"
 # border_color : string = "#8A8A8A"
 border_color : string = "#fc0303"
-
+input_color : string = "#FFFFFF"
+max_tries: int = 6
+img_width_GUI: int = 300
+img_height_GUI: int = 200
 
 
 

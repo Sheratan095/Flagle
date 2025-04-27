@@ -4,6 +4,9 @@ import globals
 from Gui.Input import Input
 from Gui.InputManager import InputManager
 
+# Initialize InputManager
+input_manager = InputManager()
+
 window = Tk()
 
 window.geometry("300x700")
@@ -13,13 +16,13 @@ window.configure(bg = globals.background_color)
 window.resizable(False, False)
 
 canvas = Canvas(
-    window,
-    bg = globals.background_color,
-    height = 700,
-    width = 300,
-    bd = 0,
-    highlightthickness = 0,
-    relief = "ridge"
+	window,
+	bg = globals.background_color,
+	height = 700,
+	width = 300,
+	bd = 0,
+	highlightthickness = 0,
+	relief = "ridge"
 )
 
 canvas.place(x = 0, y = 0)
@@ -31,168 +34,171 @@ geometry.render_geometry(canvas)
 #main image
 image_image_7 = PhotoImage(file="assets/image_7.png")
 image_7 = canvas.create_image(
-    149.0,
-    109.0,
-    image=image_image_7
+	149.0,
+	109.0,
+	image=image_image_7
 )
 
 #inptut field
-entry_image_1 = PhotoImage(
-    file="assets/entry_1.png")
-entry_bg_1 = canvas.create_image(
-    121.5,
-    621.0,
-    image=entry_image_1
-)
+# entry_image_1 = PhotoImage(
+#     file="assets/entry_1.png")
+# entry_bg_1 = canvas.create_image(
+#     121.5,
+#     621.0,
+#     image=entry_image_1
+# )
 entry_1 = Entry(
-    bd=0,
-    bg="#FFFFFF",
-    fg="#000716",
-    highlightthickness=0
+	bd=0,
+	bg=globals.background_color,
+	fg=globals.input_color,
+	highlightthickness=0
 )
 entry_1.place(
-    x=32.0,
-    y=606.0,
-    width=179.0,
-    height=28.0
+	x=32.0,
+	y=606.0,
+	width=179.0,
+	height=28.0
 )
 
+def on_button_click():
+	print("Button clicked")
+	if (entry_1.get() == ""):
+		return
+	input_manager.guess(entry_1.get())
 
 #BUTTON
 button_image_1 = PhotoImage(file="assets/button_1.png")
 button_1 = Button(
-    image=button_image_1,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_1 clicked"),
-    relief="flat"
+	image=button_image_1,
+	borderwidth=0,
+	highlightthickness=0,
+	command=lambda: on_button_click(),
+	relief="flat"
 )
 button_1.place(
-    x=235.0,
-    y=606.0,
-    width=29.0,
-    height=29.0
+	x=235.0,
+	y=606.0,
+	width=29.0,
+	height=29.0
 )
 
 canvas.create_text(
-    90.0,
-    666.0,
-    anchor="nw",
-    text="FLAGLE ",
-    fill="#FFFFFF",
-    font=("Inter Bold", 30 * -1)
+	90.0,
+	666.0,
+	anchor="nw",
+	text="FLAGLE ",
+	fill="#FFFFFF",
+	font=("Inter Bold", 30 * -1)
 )
 
 
 
 sixth_try:int = canvas.create_text(
-    32.0,
-    534.0,
-    anchor="nw",
-    text="Sixth try",
-    fill=globals.border_color,
-    font=("Inter Bold", 15 * -1)
+	32.0,
+	534.0,
+	anchor="nw",
+	text="Sixth try",
+	fill=globals.border_color,
+	font=("Inter Bold", 15 * -1)
 )
 
 sixth_img = PhotoImage(file="assets/image_1.png")
 sixth_img_idx = canvas.create_image(
-    245.0,
-    542.0,
-    image=sixth_img
+	245.0,
+	542.0,
+	image=sixth_img
 )
 
 
 
 fifth_idx : int = canvas.create_text(
-    32.0,
-    473.0,
-    anchor="nw",
-    text="Fifth try",
-    fill=globals.border_color,
-    font=("Inter Bold", 15 * -1)
+	32.0,
+	473.0,
+	anchor="nw",
+	text="Fifth try",
+	fill=globals.border_color,
+	font=("Inter Bold", 15 * -1)
 )
 
 # FIFTH TRY
 fifth_img = PhotoImage(file="assets/image_2.png")
 fifth_img_idx = canvas.create_image(
-    245.0,
-    481.0,
-    image=fifth_img
+	245.0,
+	481.0,
+	image=fifth_img
 )
 
 
 
 fourth_idx = canvas.create_text(
-    32.0,
-    412.0,
-    anchor="nw",
-    text="Fourth try",
-    fill=globals.border_color,
-    font=("Inter Bold", 15 * -1)
+	32.0,
+	412.0,
+	anchor="nw",
+	text="Fourth try",
+	fill=globals.border_color,
+	font=("Inter Bold", 15 * -1)
 )
 
 fourth_img = PhotoImage(file="assets/image_3.png")
 fourth_img_idx = canvas.create_image(
-    245.0,
-    420.0,
-    image=fourth_img
+	245.0,
+	420.0,
+	image=fourth_img
 )
 
 
 third_idx = canvas.create_text(
-    32.0,
-    351.0,
-    anchor="nw",
-    text="Third try",
-    fill=globals.border_color,
-    font=("Inter Bold", 15 * -1)
+	32.0,
+	351.0,
+	anchor="nw",
+	text="Third try",
+	fill=globals.border_color,
+	font=("Inter Bold", 15 * -1)
 )
 
 third_img = PhotoImage(file="assets/image_4.png")
 third_img_idx = canvas.create_image(
-    245.0,
-    359.0,
-    image=third_img
+	245.0,
+	359.0,
+	image=third_img
 )
 
 
 
 second_idx : int = canvas.create_text(
-    32.0,
-    290.0,
-    anchor="nw",
-    text="Second try",
-    fill=globals.border_color,
-    font=("Inter Bold", 15 * -1)
+	32.0,
+	290.0,
+	anchor="nw",
+	text="Second try",
+	fill=globals.border_color,
+	font=("Inter Bold", 15 * -1)
 )
 
 second_img = PhotoImage(file="assets/image_5.png")
 second_img_idx = canvas.create_image(
-    245.0,
-    298.0,
-    image=second_img
+	245.0,
+	298.0,
+	image=second_img
 )
 
 
 
 first_idx: int = canvas.create_text(
-    31.0,
-    229.0,
-    anchor="nw",
-    text="First try",
-    fill=globals.border_color,
-    font=("Inter Bold", 15 * -1)
+	31.0,
+	229.0,
+	anchor="nw",
+	text="First try",
+	fill=globals.border_color,
+	font=("Inter Bold", 15 * -1)
 )
 
 first_img= PhotoImage(file="assets/image_6.png")
 first_img_idx = canvas.create_image(
-    245.0,
-    237.0,
-    image=first_img
+	245.0,
+	237.0,
+	image=first_img
 )
 
-# Initialize InputManager
-input_manager = InputManager()
 
 # Create Input objects and add them to InputManager
 first_input = Input(canvas, first_idx, first_img_idx)

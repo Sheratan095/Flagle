@@ -3,6 +3,7 @@ from Gui.Input import Input
 import MergeResult
 import GuessResult
 from typing import List
+import globals
 
 class InputManager:
 
@@ -29,5 +30,5 @@ class InputManager:
 		if (guess_result.unknown_country):
 			return
 
-		self._inputs[self._current_idx].set_values(guess_result.guessed_country, guess_result.merge_result.image)
+		self._inputs[self._current_idx].set_values(guess_result.guessed_country)
 		self._current_idx += 1

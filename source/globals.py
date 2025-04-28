@@ -25,6 +25,8 @@ input_color: string = "#FFFFFF"
 img_width_GUI: int = 300
 img_height_GUI: int = 200
 max_lenght_txtbox: int = 27
+txtbox_placeholder: string = "Guess the country"
+txtbox_placeholder_color: string = "gray"
 
 txtbox_img_width: int = 38
 txtbox_img_height: int = 25

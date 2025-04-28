@@ -2,5 +2,5 @@
 [] round borders of rectangles
 [] avoid insertion of the same country twice
 [x] change cursor color
-[] placeholder for the messages
+[x] placeholder for the input
 [] handle ctrl + a in text box

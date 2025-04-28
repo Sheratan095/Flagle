@@ -4,7 +4,9 @@ import globals
 from PIL import Image, ImageTk
 from Gui.events import on_button_click
 
-def render_input_field(input_manager: InputManager) -> Entry :
+def render_input_field(input_manager: InputManager):
+	# Placeholder text
+	placeholder_text = "Enter your guess here"
 
 	# Input field
 	input_field = Entry(
@@ -21,8 +23,33 @@ def render_input_field(input_manager: InputManager) -> Entry :
 		height=28.0
 	)
 
-	# Set focus on the input field
-	input_field.focus_set()
+	# Add placeholder functionality
+	def add_placeholder(event=None):
+		if (input_field.get() == ""):
+			input_field.insert(0, placeholder_text)
+			input_field.config(fg=globals.txtbox_placeholder_color)  # Set placeholder text color
+			input_field.icursor(0)  # Set the cursor at position 0
+
+	def on_focus_out(event):
+		add_placeholder()  # Add placeholder when focused
+
+	def on_key_press(event):
+		if (input_field.get() == placeholder_text):
+			input_field.delete(0, 'end')
+			input_field.config(fg=globals.input_color)
+
+	def on_key_relase(event):
+		if (input_field.get() == ""):
+			add_placeholder()
+
+	input_field.bind("<FocusOut>", on_focus_out)
+	input_field.bind("<Key>", on_key_press)  # Change text color on key press
+	input_field.bind("<KeyRelease>", on_key_relase)  # Change text color on key release
+
+	# Initialize with placeholder
+	add_placeholder()
+
+	input_field.focus_set()  # Set focus to the input field
 
 	# Button
 	image = Image.open("assets/btn.png")
@@ -31,7 +58,7 @@ def render_input_field(input_manager: InputManager) -> Entry :
 		image=button_image_1,
 		borderwidth=0,
 		bg=globals.background_color,
-		activebackground=globals.background_color,  # Remove highlight when focuessed
+		activebackground=globals.background_color,  # Remove highlight when focused
 		highlightthickness=0,
 		command=lambda: on_button_click(input_field, input_manager),  # Pass input_field
 		relief="flat"

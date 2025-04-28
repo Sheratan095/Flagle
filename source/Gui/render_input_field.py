@@ -11,7 +11,8 @@ def render_input_field(input_manager: InputManager) -> Entry :
 		bd=0,
 		bg=globals.background_color,
 		fg=globals.input_color,
-		highlightthickness=0
+		highlightthickness=0,
+		insertbackground=globals.input_color  # Set the cursor color
 	)
 	input_field.place(
 		x=32.0,

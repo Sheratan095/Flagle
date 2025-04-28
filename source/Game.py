@@ -42,7 +42,7 @@ class FlagleGame:
 
 		self.__tries += 1
 
-		return (self._generate_guess_result(False, self.__tries == self.__max_tries, guess_country))
+		return (self._generate_guess_result(False, self.__tries - 1 == self.__max_tries, guess_country))
 
 
 	def _generate_guess_result(self, win : bool, game_end : bool, guess_country : Country) -> GuessResult:

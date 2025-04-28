@@ -2,5 +2,5 @@
 	"word_states_file": "flags/word_states.json",
 	"american_states_file": "flags/american_states.json",
 
-	"number_of_tries": 5
+	"number_of_tries": 6
 }

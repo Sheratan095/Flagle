@@ -32,8 +32,6 @@ class InputManager:
 		if (guess_result.unknown_country):
 			return
 		
-		print("e fin qui")
-
 		self._txtboxes[self._current_idx].set_values(guess_result.guessed_country)
 		self._current_idx += 1
 

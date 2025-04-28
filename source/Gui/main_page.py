@@ -1,5 +1,6 @@
 from tkinter import Tk, Canvas
-import Gui.render_geometry as geometry # Adjusted to use a relative import
+from screeninfo import get_monitors  # Import screeninfo to get monitor dimensions
+import Gui.render_geometry as geometry
 import globals
 from Gui.InputManager import InputManager
 from Gui.render_txtboxes import render_inputs
@@ -8,30 +9,44 @@ from Gui.events import handle_esc, handle_enter
 
 window = Tk()
 
-window.geometry("300x700")
-window.configure(bg = globals.background_color)
+# Set window dimensions
+window_width = 300
+window_height = 700
+
+# Get the dimensions of the primary monitor
+primary_monitor = get_monitors()[0]  # Get the primary monitor
+screen_width = primary_monitor.width
+screen_height = primary_monitor.height
+
+# Calculate position to center the window on the primary monitor
+x_position = max(0, (screen_width // 2) - (window_width // 2))
+y_position = max(0, (screen_height // 2) - (window_height // 2))
+
+# Set the geometry of the window
+window.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+window.configure(bg=globals.background_color)
 window.title("Flagle")
 window.resizable(False, False)
 
 canvas = Canvas(
-	window,
-	bg = globals.background_color,
-	height = 700,
-	width = 300,
-	bd = 0,
-	highlightthickness = 0,
-	relief = "ridge"
+    window,
+    bg=globals.background_color,
+    height=window_height,
+    width=window_width,
+    bd=0,
+    highlightthickness=0,
+    relief="ridge"
 )
 
-canvas.place(x = 0, y = 0)
+canvas.place(x=0, y=0)
 
 geometry.render_geometry(canvas)
 
 # main image
-main_image_idx : int = canvas.create_image(
-	149.0, # x
-	109.0, # y
-	image=None
+main_image_idx: int = canvas.create_image(
+    149.0,  # x
+    109.0,  # y
+    image=None
 )
 
 input_manager = InputManager(main_image_idx, canvas)
@@ -48,10 +63,10 @@ window.bind("<Escape>", lambda event: handle_esc(event, window))
 window.bind("<Return>", lambda event: handle_enter(event, input_field, input_manager))
 
 canvas.create_text(
-	90.0,
-	666.0,
-	anchor="nw",
-	text="FLAGLE ",
-	fill="#FFFFFF",
-	font=("Inter Bold", 30 * -1)
+    90.0,
+    666.0,
+    anchor="nw",
+    text="FLAGLE ",
+    fill="#FFFFFF",
+    font=("Inter Bold", 30 * -1)
 )

@@ -22,7 +22,7 @@ class InputManager:
 		self._current_idx = 0
 
 	def guess(self, guess : str):
-		if (self._current_idx == globals.max_tries):
+		if (self._current_idx - 1 == globals.max_tries):
 			return
 
 		guess_result : GuessResult = globals.game.guess(guess)
@@ -31,6 +31,8 @@ class InputManager:
 
 		if (guess_result.unknown_country):
 			return
+		
+		print("e fin qui")
 
 		self._txtboxes[self._current_idx].set_values(guess_result.guessed_country)
 		self._current_idx += 1

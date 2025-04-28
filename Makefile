@@ -5,8 +5,10 @@ all: env
 # Create the virtual environment if it does not exist.
 env:
 	@if [ ! -d "venv" ]; then \
-		python3 -m venv kivy_env; \
-		venv/bin/python -m pip install kivy; \
+		python3 -m venv venv; \
+		source venv/bin/activate; \
+		pip install Pillow; \
+		pip install screeninfo; \
 		echo "$(GREEN)[$(NAME)]:\t Venv created$(RESET)"; \
 	fi
 
@@ -20,6 +22,7 @@ build: env
 
 clean:
 	@rm -rf source/__pycache__/
+	@rm -rf source/Gui/__pycache__/
 	@echo "$(RED)[$(NAME)]:\t CLEAN$(RESET)"
 
 fclean: clean

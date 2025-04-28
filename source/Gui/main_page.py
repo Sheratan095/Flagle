@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas, Entry, Button
+from tkinter import Tk, Canvas
 import Gui.render_geometry as geometry # Adjusted to use a relative import
 import globals
 from Gui.InputManager import InputManager
@@ -28,8 +28,8 @@ geometry.render_geometry(canvas)
 
 # main image
 main_image_idx : int = canvas.create_image(
-	149.0,
-	109.0,
+	149.0, # x
+	109.0, # y
 	image=None
 )
 
@@ -47,6 +47,3 @@ canvas.create_text(
 	fill="#FFFFFF",
 	font=("Inter Bold", 30 * -1)
 )
-
-
-

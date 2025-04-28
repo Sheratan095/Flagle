@@ -8,17 +8,17 @@ import globals
 class InputManager:
 
 	def __init__(self, main_image_idx : int, canvas : Canvas):
-		self._inputs : List[Input] = []
+		self._txtboxes : List[Input] = []
 		self._current_idx = 0
 		self._canvas = canvas
 		self._main_image_idx = main_image_idx
 
 	def add_input(self, input : Input):
-		self._inputs.append(input)
+		self._txtboxes.append(input)
 
 	def start_game(self):
-		for i in range(len(self._inputs)):
-			self._inputs[i].clear()
+		for i in range(len(self._txtboxes)):
+			self._txtboxes[i].clear()
 		self._current_idx = 0
 
 	def guess(self, guess : str):
@@ -32,7 +32,7 @@ class InputManager:
 		if (guess_result.unknown_country):
 			return
 
-		self._inputs[self._current_idx].set_values(guess_result.guessed_country)
+		self._txtboxes[self._current_idx].set_values(guess_result.guessed_country)
 		self._current_idx += 1
 
 		image = guess_result.merge_result.result_image.resize((globals.main_img_width, globals.main_img_height))  # Resize the image

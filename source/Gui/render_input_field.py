@@ -19,6 +19,9 @@ def render_input_field(input_manager: InputManager):
 		height=28.0
 	)
 
+	# Set focus on the input field
+	input_field.focus_set()
+
 	# Button
 	image = Image.open("assets/btn.png")
 	button_image_1 = ImageTk.PhotoImage(image.resize((24, 24)))
@@ -46,3 +49,7 @@ def on_button_click(input_field: Entry, input_manager: InputManager):
 		return
 
 	input_manager.guess(input_field.get())
+
+	input_field.delete(0, 'end')  # Clear the input field
+
+	input_field.focus_get()

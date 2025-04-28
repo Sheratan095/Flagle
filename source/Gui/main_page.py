@@ -4,6 +4,7 @@ import globals
 from Gui.InputManager import InputManager
 from Gui.render_txtboxes import render_inputs
 from Gui.render_input_field import render_input_field
+from Gui.events import handle_esc, handle_enter
 
 window = Tk()
 
@@ -37,7 +38,14 @@ input_manager = InputManager(main_image_idx, canvas)
 # Render input fields dynamically
 render_inputs(canvas, input_manager)
 
-render_input_field(input_manager)
+# Render input field
+input_field = render_input_field(input_manager)
+
+# Bind the Esc key to the window
+window.bind("<Escape>", lambda event: handle_esc(event, window))
+
+# Bind the Enter key to the window
+window.bind("<Return>", lambda event: handle_enter(event, input_field, input_manager))
 
 canvas.create_text(
 	90.0,

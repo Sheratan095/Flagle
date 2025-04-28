@@ -2,8 +2,9 @@ from tkinter import Entry, Button
 from Gui.InputManager import InputManager
 import globals
 from PIL import Image, ImageTk
+from Gui.events import on_button_click
 
-def render_input_field(input_manager: InputManager):
+def render_input_field(input_manager: InputManager) -> Entry :
 
 	# Input field
 	input_field = Entry(
@@ -43,13 +44,4 @@ def render_input_field(input_manager: InputManager):
 		height=29.0
 	)
 
-def on_button_click(input_field: Entry, input_manager: InputManager):
-
-	if (input_field.get() == ""):
-		return
-
-	input_manager.guess(input_field.get())
-
-	input_field.delete(0, 'end')  # Clear the input field
-
-	input_field.focus_get()
+	return (input_field)

@@ -1,11 +1,12 @@
 from tkinter import Tk, Canvas
-from screeninfo import get_monitors  # Import screeninfo to get monitor dimensions
+from screeninfo import get_monitors
 import Gui.render_geometry as geometry
 import globals
 from Gui.InputManager import InputManager
 from Gui.render_txtboxes import render_inputs
 from Gui.render_input_field import render_input_field
 from Gui.events import handle_esc, handle_enter
+from Gui.message_label import MessageLabel  # Import the MessageLabel class
 
 window = Tk()
 
@@ -14,7 +15,7 @@ window_width = 300
 window_height = 700
 
 # Get the dimensions of the primary monitor
-primary_monitor = get_monitors()[0]  # Get the primary monitor
+primary_monitor = get_monitors()[0]
 screen_width = primary_monitor.width
 screen_height = primary_monitor.height
 
@@ -49,7 +50,10 @@ main_image_idx: int = canvas.create_image(
     image=None
 )
 
-input_manager = InputManager(main_image_idx, canvas)
+# Create a MessageLabel instance
+message_label = MessageLabel(window)
+
+input_manager = InputManager(main_image_idx, canvas, message_label)  # Pass the MessageLabel instance to InputManager
 # Render input fields dynamically
 render_inputs(canvas, input_manager)
 

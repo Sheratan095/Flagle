@@ -28,9 +28,6 @@ class FlagleGame:
 		if (self.__current_country.name == guess_name):
 			return (self._generate_guess_result(True, True, guess_name))
 
-		print("Guess: " + guess_name + " is wrong")
-
-
 		guess_country : Country = self.__countriesManger.get_country_by_name(guess_name)
 
 		# if the country is not found, return a special result

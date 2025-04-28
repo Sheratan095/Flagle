@@ -4,3 +4,4 @@
 [x] change cursor color
 [x] placeholder for the input
 [] handle ctrl + a in text box
+[x] label for unknown country

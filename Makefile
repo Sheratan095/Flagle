@@ -13,6 +13,7 @@ env:
 		echo "$(GREEN)[$(NAME)]:\t $(ENV_NAME) created$(RESET)"; \
 	fi
 
+
 # Run the app
 run: env
 	@echo "$(BLUE)[$(NAME)]:\t RUN$(RESET)"

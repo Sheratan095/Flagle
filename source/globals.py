@@ -7,7 +7,7 @@ mode : GameMode = GameMode.World
 
 number_of_tries : int = 5
 
-testing : bool = True
+testing : bool = False
 testing_nation : str = "Nepal"
 trasparent : tuple = (0, 0, 0, 0)
 

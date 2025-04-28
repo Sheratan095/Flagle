@@ -29,13 +29,16 @@ geometry.render_geometry(canvas)
 
 #main image
 # image_image_7 = PhotoImage(file="assets/image_7.png")
-image_7 = canvas.create_image(
+
+
+
+main_image_idx : int = canvas.create_image(
 	149.0,
 	109.0,
 	image=None
 )
 
-input_manager = InputManager(image_7, canvas)
+input_manager = InputManager(main_image_idx, canvas)
 
 
 #inptut field

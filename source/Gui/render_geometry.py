@@ -3,7 +3,21 @@ import globals
 
 def render_geometry(canvas : Canvas):
 	print("Rednering geometry")
-	
+
+
+	# Main image
+	rect_x1 = 149.0 - 260 / 2  # Top-left x-coordinate
+	rect_y1 = 109.0 - 180 / 2  # Top-left y-coordinate
+	rect_x2 = 149.0 + 260 / 2  # Bottom-right x-coordinate
+	rect_y2 = 109.0 + 180 / 2  # Bottom-right y-coordinate
+
+	canvas.create_rectangle(
+		rect_x1, rect_y1, rect_x2, rect_y2,
+		fill=globals.background_color,
+		outline=globals.border_color
+	)
+
+
 	#First try
 	canvas.create_rectangle(
 		26.0,

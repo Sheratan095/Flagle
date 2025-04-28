@@ -1,8 +1,7 @@
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from tkinter import Canvas
 from Gui.Input import Input
-import MergeResult
 import GuessResult
-from PIL import Image, ImageTk
+from PIL import ImageTk
 from typing import List
 import globals
 

@@ -90,53 +90,29 @@ def render_geometry(canvas : Canvas):
 		fill="#FFFFFF",
 		outline=globals.border_color)
 
+	# Define positions for rectangles relative to the images
+	positions = [
+		(245.0, 237.0),  # First try
+		(245.0, 298.0),  # Second try
+		(245.0, 359.0),  # Third try
+		(245.0, 420.0),  # Fourth try
+		(245.0, 481.0),  # Fifth try
+		(245.0, 542.0),  # Sixth try
+	]
 
+	# Rectangle dimensions (38x25 to match the image size)
+	rect_width = globals.txtbox_img_width - 2
+	rect_height = globals.txtbox_img_height - 1
 
-	# canvas.create_rectangle(
-	# 	215.0,
-	# 	524.0,
-	# 	216.0,
-	# 	560.0,
-	# 	fill=globals.background_color,
-	# 	outline=globals.border_color)
+	# Create rectangles for each position
+	for x_center, y_center in positions:
+		x1 = x_center - rect_width / 2  # Top-left x-coordinate
+		y1 = y_center - rect_height / 2  # Top-left y-coordinate
+		x2 = x_center + rect_width / 2  # Bottom-right x-coordinate
+		y2 = y_center + rect_height / 2  # Bottom-right y-coordinate
 
-	# canvas.create_rectangle(
-	# 	215.0,
-	# 	463.0,
-	# 	216.0,
-	# 	499.0,
-	# 	fill=globals.background_color,
-	# 	outline=globals.border_color)
-
-	# canvas.create_rectangle(
-	# 	215.0,
-	# 	402.0,
-	# 	216.0,
-	# 	438.0,
-	# 	fill=globals.background_color,
-	# 	outline=globals.border_color)
-
-	# canvas.create_rectangle(
-	# 	215.0,
-	# 	341.0,
-	# 	216.0,
-	# 	377.0,
-	# 	fill=globals.background_color,
-	# 	outline=globals.border_color)
-
-	# canvas.create_rectangle(
-	# 	215.0,
-	# 	280.0,
-	# 	216.0,
-	# 	316.0,
-	# 	fill=globals.background_color,
-	# 	outline=globals.border_color)
-	
-
-	# canvas.create_rectangle(
-	# 	215.0,
-	# 	219.0,
-	# 	216.0,
-	# 	255.0,
-	# 	fill=globals.border_color,
-	# 	outline=globals.border_color)
+		canvas.create_rectangle(
+			x1, y1, x2, y2,
+			fill=globals.background_color,  # Match the background color
+			outline=globals.border_color    # Optional: Add a border color
+		)

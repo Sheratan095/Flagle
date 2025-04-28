@@ -25,6 +25,8 @@ img_width_GUI: int = 300
 img_height_GUI: int = 200
 max_lenght_txtbox: int = 27
 
+txtbox_img_width: int = 38
+txtbox_img_height: int = 25
 
 
 

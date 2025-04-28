@@ -35,7 +35,7 @@ class InputManager:
 		self._inputs[self._current_idx].set_values(guess_result.guessed_country)
 		self._current_idx += 1
 
-		image = guess_result.merge_result.result_image.resize((247, 165))  # Resize the image
+		image = guess_result.merge_result.result_image.resize((globals.main_img_width, globals.main_img_height))  # Resize the image
 		self._tk_image = ImageTk.PhotoImage(image)  # Store the reference
 		self._canvas.itemconfig(self._main_image_idx, image=self._tk_image)  # Update the suggestion image
 

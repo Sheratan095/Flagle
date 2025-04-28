@@ -17,7 +17,7 @@ class Input:
 				country_name = country_name[:max_length - 3] + "..."  # Truncate and add ellipsis
 
 			# Convert PIL image to Tkinter PhotoImage
-			image = guessed_country.image.resize((38, 25))  # Resize the image
+			image = guessed_country.image.resize((globals.txtbox_img_width, globals.txtbox_img_height))  # Resize the image
 			self._tk_image = ImageTk.PhotoImage(image)  # Store the reference
 			self._canvas.itemconfig(self._image_id, image=self._tk_image)  # Update the image
 			self._canvas.itemconfig(self._text_id, text=country_name)  # Update the text

@@ -13,7 +13,7 @@ def render_geometry(canvas : Canvas):
 
 	canvas.create_rectangle(
 		rect_x1, rect_y1, rect_x2, rect_y2,
-		fill=globals.background_color,
+		fill=globals.main_img_background,
 		outline=globals.border_color
 	)
 
@@ -79,7 +79,7 @@ def render_geometry(canvas : Canvas):
 		273.0,
 		643.0,
 		fill=globals.background_color,
-		outline=globals.border_color)
+		outline=globals.input_color)
 
 	#Footer line
 	canvas.create_rectangle(

@@ -41,6 +41,9 @@ def render_input_field(input_manager: InputManager):
 	def on_key_relase(event):
 		if (input_field.get() == ""):
 			add_placeholder()
+		if (input_field.get() != placeholder_text and input_field.get() != ""):
+			for c in globals.game.get_matching_countries(input_field.get()):
+				print(c.name)
 
 	input_field.bind("<FocusOut>", on_focus_out)
 	input_field.bind("<Key>", on_key_press)  # Change text color on key press

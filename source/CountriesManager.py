@@ -68,7 +68,8 @@ class CountriesManager:
 	def print_countries(self):
 		for country in self.__countries:
 			print(country)
-	
+
+
 	def get_country_by_name(self, name: str) -> Country:
 
 		for country in self.__countries:
@@ -76,3 +77,14 @@ class CountriesManager:
 				return (country)
 
 		return (None)
+
+	# get the countries that match the name
+	def get_matching_countries(self, name: str) -> list[Country]:
+
+		matching_countries : list[Country] = []
+
+		for country in self.__countries:
+			if (country.name.lower().startswith(name.lower())):
+				matching_countries.append(country)
+
+		return (matching_countries)

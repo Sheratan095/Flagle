@@ -43,6 +43,9 @@ class FlagleGame:
 
 		return (self._generate_guess_result(False, self.__tries - 1 == self.__max_tries, guess_country))
 
+	def get_matching_countries(self, name: str) -> list[Country]:
+		return (self.__countriesManger.get_matching_countries(name))
+
 
 	def _generate_guess_result(self, win : bool, game_end : bool, guess_country : Country) -> GuessResult:
 		# if the game is over, generate the result image

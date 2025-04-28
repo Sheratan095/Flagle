@@ -23,7 +23,7 @@ input_color : string = "#FFFFFF"
 max_tries: int = 6
 img_width_GUI: int = 300
 img_height_GUI: int = 200
-
+max_lenght_txtbox: int = 27
 
 
 

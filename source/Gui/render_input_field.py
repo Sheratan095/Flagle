@@ -26,6 +26,7 @@ def render_input_field(input_manager: InputManager):
 		image=button_image_1,
 		borderwidth=0,
 		bg=globals.background_color,
+		activebackground=globals.background_color,  # Remove highlight when focuessed
 		highlightthickness=0,
 		command=lambda: on_button_click(input_field, input_manager),  # Pass input_field
 		relief="flat"
@@ -40,7 +41,8 @@ def render_input_field(input_manager: InputManager):
 	)
 
 def on_button_click(input_field: Entry, input_manager: InputManager):
-	print("Button clicked")
-	if input_field.get() == "":
+
+	if (input_field.get() == ""):
 		return
+
 	input_manager.guess(input_field.get())

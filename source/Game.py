@@ -23,9 +23,11 @@ class FlagleGame:
 		print("Game started \nTarget country is: " + str(self.__current_country.name))
 
 
-	def guess(self, guess_name: string) -> GuessResult:
+	def guess(self, guess: string) -> GuessResult:
 
-		if (self.__current_country.name == guess_name):
+		guess_name = guess.lower()
+
+		if (self.__current_country.name.lower() == guess_name):
 			return (self._generate_guess_result(True, True, guess_name))
 
 		guess_country : Country = self.__countriesManger.get_country_by_name(guess_name)

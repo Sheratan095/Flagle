@@ -72,7 +72,7 @@ class CountriesManager:
 	def get_country_by_name(self, name: str) -> Country:
 
 		for country in self.__countries:
-			if (country.name == name):
+			if (country.name.lower() == name):
 				return (country)
 
 		return (None)

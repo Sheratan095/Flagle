@@ -66,8 +66,8 @@ def render_input_field(input_manager: InputManager):
 		# Adjust the height dynamically based on the number of matching countries
 		if len(matching_countries) > 0:
 			# Start the frame slightly higher than the textbox and grow upward
-			frame_height = len(matching_countries) * 30  # 30 because it works somwehow
-			matching_frame.place(x=input_x, y=input_y - frame_height, width=237, height=frame_height)
+			frame_height = len(matching_countries) * 30  # 30 because it works somehow
+			matching_frame.place(x=input_x, y=input_y - frame_height, width=240, height=frame_height)
 		else:
 			# Hide the frame if no matching countries
 			matching_frame.place_forget()
@@ -76,6 +76,12 @@ def render_input_field(input_manager: InputManager):
 		for index, country in enumerate(matching_countries):
 			country_frame = Frame(matching_frame, bg=globals.background_color, height=24)
 			country_frame.pack(fill="x", pady=2)  # Add padding except for the last entry
+
+				# Define a click handler for the country
+			def on_country_click(event, selected_country=country):
+				input_field.delete(0, 'end')  # Clear the input field
+				input_field.insert(0, selected_country.name)  # Set the selected country's name
+				matching_frame.place_forget()  # Hide the matching frame
 
 			# Display country name (aligned to the left)
 			name_label = Label(
@@ -86,15 +92,18 @@ def render_input_field(input_manager: InputManager):
 				anchor="w",
 				font=("Arial", 10),
 			)
-
 			name_label.pack(side="left")
+
+			# Bind the click event to the country frame
+			country_frame.bind("<Button-1>", on_country_click)
+			name_label.bind("<Button-1>", on_country_click)  # Also bind to the label for better click detection
 
 			# Load and display flag image (aligned to the right)
 			flag_image = Image.open(country.get_flag()).resize((32, 24))  # Adjusted flag size
 			flag_photo = ImageTk.PhotoImage(flag_image)
 			flag_label = Label(country_frame, image=flag_photo, bg=globals.background_color)
 			flag_label.image = flag_photo  # Keep reference to avoid garbage collection
-			flag_label.pack(side="right")
+			flag_label.pack(side="right", padx=2)
 
 
 	def on_key_release(event):

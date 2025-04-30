@@ -67,23 +67,30 @@ def render_input_field(input_manager: InputManager):
 		# Adjust the height dynamically based on the number of matching countries
 		if (matching_countries):
 			# Start the frame slightly higher than the textbox and grow upward
-			frame_height = len(matching_countries) * 20  # Increased height for better spacing
-			matching_frame.place(x=input_x, y=input_y - frame_height - 10, width=237, height=frame_height)
+			frame_height = len(matching_countries) * (24 + 5)  # 24: height of each entry + 5: padding
+			matching_frame.place(x=input_x, y=input_y - frame_height, width=237, height=frame_height)
+		# else:
+		# 	# Hide the frame if no matching countries
+		# 	matching_frame.place_forget()
 
-		for country in matching_countries:
+		# enumerate() allows to get the index and the country object
+		for index, country in enumerate(matching_countries):
 			# Create a container frame for each country
-			country_frame = Frame(matching_frame, bg=globals.background_color, height=12)  # Adjusted height for each entry
+			country_frame = Frame(matching_frame, bg=globals.background_color, height=24)  # Adjusted height for each entry
 			country_frame.pack(fill="x")
 
 			# Display country name (aligned to the left)
 			name_label = Label(
-				country_frame, 
+				country_frame,
 				text=globals.get_fixed_country_name(country.name, 30),
-				fg=globals.input_color, 
-				bg=globals.background_color, 
-				anchor="w", 
-				font=("Arial", 10)  # Adjusted font size
+				fg=globals.input_color,
+				bg=globals.background_color,
+				anchor="w",
+				font=("Arial", 10),  # Adjusted font size
+				pady=5,
+				borderwidth= 1 if (index == 0) else 0,  # Add border to the first entry
 			)
+
 			name_label.pack(side="left")
 
 			# Load and display flag image (aligned to the right)
@@ -92,6 +99,7 @@ def render_input_field(input_manager: InputManager):
 			flag_label = Label(country_frame, image=flag_photo, bg=globals.background_color)
 			flag_label.image = flag_photo  # Keep reference to avoid garbage collection
 			flag_label.pack(side="right")
+
 
 	def on_key_release(event):
 		if (input_field.get() == ""):

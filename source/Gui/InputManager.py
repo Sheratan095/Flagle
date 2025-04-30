@@ -5,7 +5,7 @@ from PIL import ImageTk
 from typing import List
 import globals
 from Gui.message_label import MessageLabel
-from Gui.end_page import show_result_screen  # Import the new module
+from Gui.end_pages import show_result_screen  # Import the new module
 
 class InputManager:
 
@@ -47,9 +47,9 @@ class InputManager:
 
 		if (guess_result.game_end):
 			if (guess_result.win):
-				show_result_screen(self._canvas.master, "You Win!", self._restart_game)
+				show_result_screen(self._canvas.master, "You Win!")
 			else:
-				show_result_screen(self._canvas.master, f"You Lose! The correct answer was: {globals.game.get_current_country()}", self._restart_game)
+				show_result_screen(self._canvas.master, f"You Lose! The correct answer was: {globals.game.get_current_country()}")
 			return
 
 	def show_win_screen(self):
@@ -59,7 +59,5 @@ class InputManager:
 		"""Display the lose screen."""
 		correct_country = globals.game._FlagleGame__current_country.name
 
-	def _restart_game(self):
-		"""Restart the game."""
-		globals.game.start_game(globals.current_game_mode)
+
 

@@ -32,7 +32,7 @@ class FlagleGame:
 		guess_name = guess.lower()
 
 		if (self.__current_country.name.lower() == guess_name):
-			return (self._generate_guess_result(True, True, guess_name))
+			return (self._generate_guess_result(True, True, guess_country=self.__current_country))
 
 		guess_country : Country = self.__countriesManger.get_country_by_name(guess_name)
 
@@ -59,7 +59,7 @@ class FlagleGame:
 				game_end=game_end,
 				win=win,
 				tries=self.__tries,
-				merge_result=MergeResult(self.__current_country.image, 100.0)
+				merge_result=MergeResult(result_image=self.__current_country.image, percentage=100.0)
 			))
 
 		marge_resutlt : MergeResult = merge_images(self.__current_country.image, guess_country.image, self.__current_suggestion_image)

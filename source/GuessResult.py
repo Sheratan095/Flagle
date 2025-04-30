@@ -5,7 +5,7 @@ import Country
 @dataclass
 class GuessResult:
 	game_end : bool = False
-	guessed_country : Country = ""
+	guessed_country : Country = None
 	win : bool = False
 	tries : int = 0
 	merge_result :MergeResult = None

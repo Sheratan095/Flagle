@@ -30,6 +30,7 @@ class InputManager:
 			return
 
 		guess_result: GuessResult = globals.game.guess(guess)
+		print(guess_result.guessed_country)
 
 		if (guess_result.unknown_country):
 			self._message_label.show_message()
@@ -37,7 +38,7 @@ class InputManager:
 
 		self._message_label.hide_message()
 
-		self._txtboxes[self._current_idx].set_values(guess_result.guessed_country)
+		self._txtboxes[self._current_idx].set_values(guess_result.guessed_country)  # Set the guessed country in the input box
 		self._current_idx += 1
 
 		image = guess_result.merge_result.result_image.resize((globals.main_img_width, globals.main_img_height))  # Resize the image

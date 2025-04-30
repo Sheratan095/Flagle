@@ -23,6 +23,10 @@ class FlagleGame:
 		print("Game started \nTarget country is: " + str(self.__current_country.name))
 
 
+	def get_current_country(self) -> Country:
+		if (self.__tries == self.__max_tries):
+			return (self.__current_country)
+
 	def guess(self, guess: string) -> GuessResult:
 
 		guess_name = guess.lower()
@@ -41,7 +45,7 @@ class FlagleGame:
 
 		self.__tries += 1
 
-		return (self._generate_guess_result(False, self.__tries - 1 == self.__max_tries, guess_country))
+		return (self._generate_guess_result(False, self.__tries == self.__max_tries, guess_country))
 
 	def get_matching_countries(self, name: str) -> list[Country]:
 		return (self.__countriesManger.get_matching_countries(name))

@@ -1,8 +1,14 @@
-from tkinter import Entry, Button
+from tkinter import Entry, Button, Frame, Label
 from Gui.InputManager import InputManager
 import globals
 from PIL import Image, ImageTk
 from Gui.events import on_button_click
+from Country import Country
+
+input_x = 32.0
+input_y = 606.0
+input_width = 179.0
+input_height = 28.0
 
 def render_input_field(input_manager: InputManager):
 	# Placeholder text
@@ -17,10 +23,10 @@ def render_input_field(input_manager: InputManager):
 		insertbackground=globals.input_color  # Set the cursor color
 	)
 	input_field.place(
-		x=32.0,
-		y=606.0,
-		width=179.0,
-		height=28.0
+		x=input_x,
+		y=input_y,
+		width=input_width,
+		height=input_height
 	)
 
 	# Add placeholder functionality
@@ -53,6 +59,54 @@ def render_input_field(input_manager: InputManager):
 	add_placeholder()
 
 	input_field.focus_set()  # Set focus to the input field
+
+	# Frame to display matching countries (placed completely above the input field)
+	matching_frame = Frame(bg=globals.input_color)
+
+	def update_matching_countries():
+		# Clear the frame
+		for widget in matching_frame.winfo_children():
+			widget.destroy()
+		matching_frame.place_forget()
+
+		matching_countries: list[Country] = globals.game.get_matching_countries(input_field.get())
+
+		# Adjust the height dynamically based on the number of matching countries
+		if matching_countries:
+			# Start the frame slightly higher than the textbox and grow upward
+			frame_height = len(matching_countries) * 20  # Increased height for better spacing
+			matching_frame.place(x=input_x, y=input_y - frame_height - 10, width=237, height=frame_height)
+
+		for country in matching_countries:
+			# Create a container frame for each country
+			country_frame = Frame(matching_frame, bg=globals.background_color, height=12)  # Adjusted height for each entry
+			country_frame.pack(fill="x")
+
+			# Display country name (aligned to the left)
+			name_label = Label(
+				country_frame, 
+				text=country.name, 
+				fg=globals.input_color, 
+				bg=globals.background_color, 
+				anchor="w", 
+				font=("Arial", 12)  # Adjusted font size
+			)
+			name_label.pack(side="left")
+
+			# Load and display flag image (aligned to the right)
+			flag_image = Image.open(country.get_flag()).resize((32, 24))  # Adjusted flag size
+			flag_photo = ImageTk.PhotoImage(flag_image)
+			flag_label = Label(country_frame, image=flag_photo, bg=globals.background_color)
+			flag_label.image = flag_photo  # Keep reference to avoid garbage collection
+			flag_label.pack(side="right")
+
+	def on_key_release(event):
+		if (input_field.get() == ""):
+			add_placeholder()
+		update_matching_countries()
+
+	# Bind key release to update matching countries
+	input_field.bind("<KeyRelease>", on_key_release)
 
 	# Button
 	image = Image.open("assets/btn.png")

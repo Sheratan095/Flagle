@@ -27,6 +27,9 @@ class Country:
 	def get_img_height(self):
 		return (self.image.height)
 
+	def get_flag(self):
+		return (self.__flag)
+
 	def __eq__(self, other):
 
 		if (not isinstance(other, Country)):

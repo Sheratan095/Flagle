@@ -20,7 +20,8 @@ def render_input_field(input_manager: InputManager):
 		bg=globals.background_color,
 		fg=globals.input_color,
 		highlightthickness=0,
-		insertbackground=globals.input_color  # Set the cursor color
+		insertbackground=globals.input_color,  # Set the cursor color
+		font=("Arial", 10, "bold")  # Set font to bold
 	)
 	input_field.place(
 		x=input_x,
@@ -44,16 +45,8 @@ def render_input_field(input_manager: InputManager):
 			input_field.delete(0, 'end')
 			input_field.config(fg=globals.input_color)
 
-	def on_key_relase(event):
-		if (input_field.get() == ""):
-			add_placeholder()
-		if (input_field.get() != placeholder_text and input_field.get() != ""):
-			for c in globals.game.get_matching_countries(input_field.get()):
-				print(c.name)
-
 	input_field.bind("<FocusOut>", on_focus_out)
 	input_field.bind("<Key>", on_key_press)  # Change text color on key press
-	input_field.bind("<KeyRelease>", on_key_relase)  # Change text color on key release
 
 	# Initialize with placeholder
 	add_placeholder()
@@ -72,7 +65,7 @@ def render_input_field(input_manager: InputManager):
 		matching_countries: list[Country] = globals.game.get_matching_countries(input_field.get())
 
 		# Adjust the height dynamically based on the number of matching countries
-		if matching_countries:
+		if (matching_countries):
 			# Start the frame slightly higher than the textbox and grow upward
 			frame_height = len(matching_countries) * 20  # Increased height for better spacing
 			matching_frame.place(x=input_x, y=input_y - frame_height - 10, width=237, height=frame_height)
@@ -85,11 +78,11 @@ def render_input_field(input_manager: InputManager):
 			# Display country name (aligned to the left)
 			name_label = Label(
 				country_frame, 
-				text=country.name, 
+				text=globals.get_fixed_country_name(country.name, 30),
 				fg=globals.input_color, 
 				bg=globals.background_color, 
 				anchor="w", 
-				font=("Arial", 12)  # Adjusted font size
+				font=("Arial", 10)  # Adjusted font size
 			)
 			name_label.pack(side="left")
 

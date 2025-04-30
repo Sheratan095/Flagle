@@ -24,7 +24,7 @@ border_color: string = "#8A8A8A"
 input_color: string = "#FFFFFF"
 img_width_GUI: int = 300
 img_height_GUI: int = 200
-max_lenght_txtbox: int = 27
+max_lenght_txtbox: int = 25
 txtbox_placeholder: string = "Guess the country"
 txtbox_placeholder_color: string = "gray"
 
@@ -40,7 +40,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Load config.json using an absolute path
 config_path = os.path.join(BASE_DIR, "config.json")
 with open(config_path, "r") as file:
-    data = json.load(file)
-    max_tries = data["number_of_tries"]
+	data = json.load(file)
+	max_tries = data["number_of_tries"]
 
 game: FlagleGame = FlagleGame(max_tries)
+
+
+def get_fixed_country_name(country_name: str, max_length: int) -> str:
+	
+	fixed_name = country_name
+
+	if (len(country_name) > max_length):
+		fixed_name = country_name[:max_length - 3] + "..."
+	return (fixed_name)

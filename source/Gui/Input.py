@@ -12,15 +12,12 @@ class Input:
 	def set_values(self, guessed_country : Country):
 			# Truncate the country name if it's too long
 			max_length = globals.max_lenght_txtbox  # Set the maximum length for the text
-			country_name = guessed_country.name
-			if len(country_name) > max_length:
-				country_name = country_name[:max_length - 3] + "..."  # Truncate and add ellipsis
 
 			# Convert PIL image to Tkinter PhotoImage
 			image = guessed_country.image.resize((globals.txtbox_img_width, globals.txtbox_img_height))  # Resize the image
 			self._tk_image = ImageTk.PhotoImage(image)  # Store the reference
 			self._canvas.itemconfig(self._image_id, image=self._tk_image)  # Update the image
-			self._canvas.itemconfig(self._text_id, text=country_name)  # Update the text
+			self._canvas.itemconfig(self._text_id, text=globals.get_fixed_country_name(guessed_country.name, max_length))  # Update the text
 
 	def clear(self):
 		self._canvas.itemconfig(self._text_id, text="")

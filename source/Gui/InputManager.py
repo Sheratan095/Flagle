@@ -33,13 +33,10 @@ class InputManager:
 			return
 
 		if (guess_result.unknown_country):
-			print("Guess: " + guess + " is unknown")
 			self._message_label.show_message()
 			return
 
 		self._message_label.hide_message()
-
-		print("Guess: " + guess + " is wrong")
 
 		self._txtboxes[self._current_idx].set_values(guess_result.guessed_country)
 		self._current_idx += 1

@@ -105,6 +105,8 @@ def render_input_field(input_manager: InputManager):
 			flag_label.image = flag_photo  # Keep reference to avoid garbage collection
 			flag_label.pack(side="right", padx=2)
 
+			flag_label.bind("<Button-1>", on_country_click)  # Also bind to the label for better click detection
+
 
 	def on_key_release(event):
 		if (input_field.get() == ""):

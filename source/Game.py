@@ -51,7 +51,7 @@ class FlagleGame:
 		# if the game is over, generate the result image
 		if (game_end == True):
 			return (GuessResult(
-				guessed_country=guess_country.name,
+				guessed_country=guess_country,
 				game_end=game_end,
 				win=win,
 				tries=self.__tries,

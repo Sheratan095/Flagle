@@ -54,30 +54,28 @@ def render_input_field(input_manager: InputManager):
 	input_field.focus_set()  # Set focus to the input field
 
 	# Frame to display matching countries (placed completely above the input field)
-	matching_frame = Frame(bg=globals.input_color)
+	matching_frame = Frame(bg=globals.background_color)
 
 	def update_matching_countries():
 		# Clear the frame
 		for widget in matching_frame.winfo_children():
 			widget.destroy()
-		matching_frame.place_forget()
-
+		
 		matching_countries: list[Country] = globals.game.get_matching_countries(input_field.get())
 
 		# Adjust the height dynamically based on the number of matching countries
-		if (matching_countries):
+		if len(matching_countries) > 0:
 			# Start the frame slightly higher than the textbox and grow upward
-			frame_height = len(matching_countries) * (24 + 5)  # 24: height of each entry + 5: padding
+			frame_height = len(matching_countries) * 30  # 30 because it works somwehow
 			matching_frame.place(x=input_x, y=input_y - frame_height, width=237, height=frame_height)
-		# else:
-		# 	# Hide the frame if no matching countries
-		# 	matching_frame.place_forget()
+		else:
+			# Hide the frame if no matching countries
+			matching_frame.place_forget()
 
-		# enumerate() allows to get the index and the country object
+		# Add each country to the frame
 		for index, country in enumerate(matching_countries):
-			# Create a container frame for each country
-			country_frame = Frame(matching_frame, bg=globals.background_color, height=24)  # Adjusted height for each entry
-			country_frame.pack(fill="x")
+			country_frame = Frame(matching_frame, bg=globals.background_color, height=24)
+			country_frame.pack(fill="x", pady=2)  # Add padding except for the last entry
 
 			# Display country name (aligned to the left)
 			name_label = Label(
@@ -86,9 +84,7 @@ def render_input_field(input_manager: InputManager):
 				fg=globals.input_color,
 				bg=globals.background_color,
 				anchor="w",
-				font=("Arial", 10),  # Adjusted font size
-				pady=5,
-				borderwidth= 1 if (index == 0) else 0,  # Add border to the first entry
+				font=("Arial", 10),
 			)
 
 			name_label.pack(side="left")

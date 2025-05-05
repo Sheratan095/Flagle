@@ -1,4 +1,4 @@
-from tkinter import Entry, Button, Frame, Label, Canvas, Scrollbar
+from tkinter import Entry, Button, Frame, Label, Canvas, Scrollbar, ttk
 from Gui.InputManager import InputManager
 import globals
 from PIL import Image, ImageTk
@@ -54,10 +54,23 @@ def render_input_field(input_manager: InputManager):
 
 	# Create a canvas + scrollbar + frame for matching countries
 	matching_canvas = Canvas(bg=globals.background_color, highlightthickness=0)
-	scrollbar = Scrollbar(orient="vertical", command=matching_canvas.yview, bg=globals.test_color)
-	matching_frame = Frame(matching_canvas, bg=globals.background_color)
+
+	style = ttk.Style()
+	style.theme_use("clam")  # Use a theme that allows customization
+	style.configure(
+		"Vertical.TScrollbar",
+		background=globals.input_color,        # The scrollbar "thumb" (the draggable part)
+		troughcolor=globals.background_color,        # The background track
+		bordercolor="#cccccc",        # Border color (theme-dependent)
+		arrowcolor=globals.input_color,         # Arrow color (up/down indicators, if visible)
+		relief="flat",                # Border style: flat, groove, ridge, etc.
+		gripcount=0                   # Rarely used
+	)
+
+	scrollbar = ttk.Scrollbar(orient="vertical", style="Vertical.TScrollbar", command=matching_canvas.yview)
 
 	# Configure scrolling
+	matching_frame = Frame(matching_canvas, bg=globals.background_color)
 	matching_frame.bind("<Configure>", lambda e: matching_canvas.configure(scrollregion=matching_canvas.bbox("all")))
 	matching_canvas.create_window((0, 0), window=matching_frame, anchor="nw")
 	matching_canvas.configure(yscrollcommand=scrollbar.set)

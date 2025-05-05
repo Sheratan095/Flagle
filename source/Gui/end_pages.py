@@ -1,7 +1,7 @@
 from tkinter import Toplevel, Label, Button
 import globals
 
-def show_result_screen(canvas_master, message: str):
+def show_result_screen(canvas_master, message: str, input_manager):
 	"""Display the win/lose screen."""
 	result_window = Toplevel(canvas_master)
 	result_window.title("Game Over")
@@ -40,3 +40,4 @@ def show_result_screen(canvas_master, message: str):
 
 	def _restart_game():
 		globals.game.start_game(globals.mode)
+		input_manager.start_game()

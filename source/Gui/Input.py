@@ -3,10 +3,11 @@ import Country
 import globals
 
 class Input:
-	def __init__(self, canvas, text_id: int, image_id: int):
+	def __init__(self, canvas, text_id: int, image_id: int, text: str):
 		self._canvas = canvas
 		self._text_id = text_id
 		self._image_id = image_id
+		self._text = text
 		self._tk_image = None  # Store a reference to the Tkinter image
 
 	def set_values(self, guessed_country : Country):
@@ -20,6 +21,9 @@ class Input:
 			self._canvas.itemconfig(self._text_id, text=globals.get_fixed_country_name(guessed_country.name, max_length))  # Update the text
 
 	def clear(self):
-		self._canvas.itemconfig(self._text_id, text="")
-		# TO DO add a placeholder image
-		# self._canvas.itemconfig(self._image_id, image="")
+
+		if (self._canvas.itemcget(self._text_id, "text") == self._text):
+			return
+
+		self._canvas.itemconfig(self._text_id, text=self._text)
+		self._canvas.itemconfig(self._image_id, image="")  # Clear the image

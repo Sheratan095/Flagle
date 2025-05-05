@@ -1,4 +1,4 @@
-from tkinter import Canvas, Label, Toplevel, Button
+from tkinter import Canvas
 from Gui.Input import Input
 import GuessResult
 from PIL import ImageTk
@@ -23,7 +23,8 @@ class InputManager:
 		for i in range(len(self._txtboxes)):
 			self._txtboxes[i].clear()
 		self._current_idx = 0
-		self._message_label.config(text="")  # Clear any existing message
+		self._canvas.itemconfig(self._main_image_idx, image="")
+		# self._message_label.config(text="")  # Clear any existing message
 
 	def guess(self, guess: str):
 		if (self._current_idx - 1 == globals.max_tries):
@@ -46,9 +47,9 @@ class InputManager:
 
 		if (guess_result.game_end):
 			if (guess_result.win):
-				show_result_screen(self._canvas.master, "You Win!")
+				show_result_screen(self._canvas.master, "You Win!", self)
 			else:
-				show_result_screen(self._canvas.master, f"You Lose! The correct answer was: {globals.game.get_current_country()}")
+				show_result_screen(self._canvas.master, f"You Lose! The correct answer was: {globals.game.get_current_country()}", self)
 			return
 
 	def show_win_screen(self):

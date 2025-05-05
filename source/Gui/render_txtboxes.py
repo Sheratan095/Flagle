@@ -2,6 +2,7 @@ from Gui.Input import Input
 from Gui.InputManager import InputManager
 from tkinter import Canvas
 import globals
+import string
 
 def render_inputs(canvas: Canvas, input_manager: InputManager):
 
@@ -14,12 +15,17 @@ def render_inputs(canvas: Canvas, input_manager: InputManager):
 		(32.0, 534.0, 245.0, 542.0),  # Sixth try
 	]
 
+	txt_values: list[string] = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth"]
+
 	for idx, (text_x, text_y, image_x, image_y) in enumerate(positions):
+
+		current_text:string = f"{txt_values[idx]} try"
+
 		text_id = canvas.create_text(
 			text_x,
 			text_y,
 			anchor="nw",
-			text=f"{['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth'][idx]} try",
+			text=current_text,
 			fill=globals.border_color,
 			font=("Inter Bold", 15 * -1)
 		)
@@ -30,5 +36,5 @@ def render_inputs(canvas: Canvas, input_manager: InputManager):
 			image=None
 		)
 
-		input_field = Input(canvas, text_id, image_id)
+		input_field = Input(canvas, text_id, image_id, current_text)
 		input_manager.add_input(input_field)

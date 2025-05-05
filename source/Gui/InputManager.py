@@ -58,5 +58,3 @@ class InputManager:
 		"""Display the lose screen."""
 		correct_country = globals.game._FlagleGame__current_country.name
 
-
-

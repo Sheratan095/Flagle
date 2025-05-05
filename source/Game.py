@@ -79,7 +79,7 @@ class FlagleGame:
 
 		new_countrie : Country = None
 
-		while (self.__current_country == new_countrie):
+		while (self.__current_country == new_countrie or new_countrie == None):
 			new_countrie = self.__countriesManger.get_random_country()
 
 		self.__current_country = new_countrie

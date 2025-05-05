@@ -29,6 +29,11 @@ class InputManager:
 			self._txtboxes[i].clear()
 		self._current_idx = 0
 		self._canvas.itemconfig(self._main_image_idx, image="")
+		if (self.input_fied is not None):
+			self.input_fied.config(
+				state="normal",
+			)
+			self.input_fied.delete(0, 'end')
 		# self._message_label.config(text="")  # Clear any existing message
 
 	def guess(self, guess: str):

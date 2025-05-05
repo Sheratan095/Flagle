@@ -19,9 +19,6 @@ run: env
 	@echo "$(BLUE)[$(NAME)]:\t RUN$(RESET)"
 	$(ENV_NAME)/bin/python source/$(NAME).py
 
-
-build: env
-
 clean:
 	@rm -rf source/__pycache__/
 	@rm -rf source/Gui/__pycache__/

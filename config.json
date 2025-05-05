@@ -19,7 +19,7 @@
 		"main_img_background": "#243364"
 	},
 	"backend": {
-		"color_tollerance": 40,
+		"color_tollerance": 60,
 		"testing": false,
 		"testing_nation": "Nepal",
 		"trasparent": [0, 0, 0, 0]

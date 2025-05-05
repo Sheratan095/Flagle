@@ -18,6 +18,7 @@ class FlagleGame:
 
 		self.__countriesManger.load_from_json(game_mode.value)
 		self.__tries : int = 0
+		self.__current_suggestion_image = None  # Reset the suggestion image
 		self._get_random_country()
 
 		print("Game started \nTarget country is: " + str(self.__current_country.name))

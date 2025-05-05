@@ -62,7 +62,7 @@ def render_input_field(input_manager: InputManager):
 	matching_canvas.create_window((0, 0), window=matching_frame, anchor="nw")
 	matching_canvas.configure(yscrollcommand=scrollbar.set)
 
-	# Optional mouse wheel support
+	# Mouse wheel support
 	def _on_mousewheel(event):
 		matching_canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
 
@@ -88,7 +88,7 @@ def render_input_field(input_manager: InputManager):
 
 		for index, country in enumerate(matching_countries):
 			country_frame = Frame(matching_frame, bg=globals.background_color, height=24)
-			country_frame.pack(fill="x", pady=2)
+			country_frame.pack(fill="x", pady=1)
 
 			def on_country_click(event, selected_country=country):
 				input_field.delete(0, 'end')
@@ -103,6 +103,7 @@ def render_input_field(input_manager: InputManager):
 				bg=globals.background_color,
 				anchor="w",
 				font=("Arial", 10),
+				width=22  # Set a fixed width for the label
 			)
 			name_label.pack(side="left")
 

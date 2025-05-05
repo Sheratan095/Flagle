@@ -54,7 +54,7 @@ def render_input_field(input_manager: InputManager):
 
 	# Create a canvas + scrollbar + frame for matching countries
 	matching_canvas = Canvas(bg=globals.background_color, highlightthickness=0)
-	scrollbar = Scrollbar(orient="vertical", command=matching_canvas.yview, bg=globals.background_color)
+	scrollbar = Scrollbar(orient="vertical", command=matching_canvas.yview, bg=globals.test_color)
 	matching_frame = Frame(matching_canvas, bg=globals.background_color)
 
 	# Configure scrolling

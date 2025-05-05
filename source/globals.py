@@ -35,6 +35,9 @@ main_img_width: int = data["frontend"]["main_img_width"]
 main_img_height: int = data["frontend"]["main_img_height"]
 main_img_background: str = data["frontend"]["main_img_background"]
 
+#red
+test_color: str = "#FF0000"
+
 # Initialize the game
 game: FlagleGame = FlagleGame(max_tries)
 

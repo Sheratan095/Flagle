@@ -7,17 +7,20 @@ from Gui.render_txtboxes import render_inputs
 from Gui.render_input_field import render_input_field
 from Gui.events import handle_esc, handle_enter
 from Gui.message_label import MessageLabel  # Import the MessageLabel class
+from screeninfo import get_monitors
+from tkinter import PhotoImage
 
 window = Tk()
+
+icon = PhotoImage(file="assets/icon.png")  # Use a .png
+window.wm_iconphoto(True, icon)
 
 # Set window dimensions
 window_width = 300
 window_height = 700
 
-from screeninfo import get_monitors
-
 # Choose the monitor where you want the window (e.g., primary monitor)
-monitor = get_monitors()[0]  # You can change the index to target a different monitor
+monitor = get_monitors()[globals.main_screen_idx]  # You can change the index to target a different monitor
 
 # Get monitor position and size
 monitor_x = monitor.x

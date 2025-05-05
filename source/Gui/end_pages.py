@@ -16,7 +16,7 @@ def show_result_screen(canvas_master, message: str, input_manager):
 	# Disable the red cross (close button)
 	result_window.protocol("WM_DELETE_WINDOW", lambda: None)
 
-	monitor = get_monitors()[0]  # You can change the index to target a different monitor
+	monitor = get_monitors()[globals.main_screen_idx]  # You can change the index to target a different monitor
 
 	# Get monitor position and size
 	monitor_x = monitor.x

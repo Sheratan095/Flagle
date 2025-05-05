@@ -16,7 +16,7 @@ if (-Not (Test-Path $venvPath)) {
 
     Write-Host "Installing dependencies into virtual environment..."
     & $venvPython -m pip install --upgrade pip
-    & $venvPython -m pip install pyinstaller
+    & $venvPython -m pip install pyinstaller Pillow screeninfo
 }
 else {
     Write-Host "Virtual environment already exists."
@@ -25,7 +25,6 @@ else {
 # Step 2: Run PyInstaller
 Write-Host "Building project with PyInstaller..."
 & $venvPython -m PyInstaller `
-  --icon "assets/icon.ico" `
   --onedir `
   --noconfirm `
   --windowed `

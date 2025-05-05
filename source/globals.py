@@ -18,7 +18,9 @@ color_tollerance: int = 40
 max_width: int = 0
 max_height: int = 0
 
+
 # FRONTEND
+main_screen_idx: int = 1
 background_color: string = "#1D2951"
 border_color: string = "#8A8A8A"
 input_color: string = "#FFFFFF"

@@ -53,18 +53,25 @@ def render_input_field(input_manager: InputManager):
 	input_field.focus_set()
 
 	# Create a canvas + scrollbar + frame for matching countries
-	matching_canvas = Canvas(bg=globals.background_color, highlightthickness=0)
+	matching_canvas = Canvas(
+		bg=globals.background_color,
+		highlightthickness=2,  # Set the border thickness
+		highlightbackground=globals.input_color,  # Set the border color
+		highlightcolor=globals.input_color,  # Set the border color when focused
+		borderwidth=0  # Remove the default border
+	)
 
 	style = ttk.Style()
 	style.theme_use("clam")  # Use a theme that allows customization
 	style.configure(
 		"Vertical.TScrollbar",
-		background=globals.input_color,        # The scrollbar "thumb" (the draggable part)
+		background=globals.background_color,        # The scrollbar "thumb" (the draggable part)
 		troughcolor=globals.background_color,        # The background track
-		bordercolor="#cccccc",        # Border color (theme-dependent)
+		bordercolor=globals.background_color,        # Border color (theme-dependent)
 		arrowcolor=globals.input_color,         # Arrow color (up/down indicators, if visible)
 		relief="flat",                # Border style: flat, groove, ridge, etc.
-		gripcount=0                   # Rarely used
+		borderwidth=0,             # Border width
+		gripcount=5                   # Number of "grips"/lines on the scrollbar (for mouse dragging)
 	)
 
 	scrollbar = ttk.Scrollbar(orient="vertical", style="Vertical.TScrollbar", command=matching_canvas.yview)

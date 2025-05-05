@@ -2,7 +2,7 @@ from Gui.Input import Input
 from Gui.InputManager import InputManager
 from tkinter import Canvas
 import globals
-import string
+from typing import List
 
 def render_inputs(canvas: Canvas, input_manager: InputManager):
 
@@ -15,11 +15,11 @@ def render_inputs(canvas: Canvas, input_manager: InputManager):
 		(32.0, 534.0, 245.0, 542.0),  # Sixth try
 	]
 
-	txt_values: list[string] = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth"]
+	txt_values: List[str] = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth"]
 
 	for idx, (text_x, text_y, image_x, image_y) in enumerate(positions):
 
-		current_text:string = f"{txt_values[idx]} try"
+		current_text: str = f"{txt_values[idx]} try"
 
 		text_id = canvas.create_text(
 			text_x,

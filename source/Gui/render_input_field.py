@@ -76,9 +76,9 @@ def render_input_field(input_manager: InputManager):
 		matching_countries: list[Country] = globals.game.get_matching_countries(input_field.get())
 
 		if matching_countries:
-			max_visible = 6
+			max_visible = 10  # Maximum number of countries to display
 			visible_count = min(len(matching_countries), max_visible)
-			frame_height = visible_count * 30
+			frame_height = visible_count * 30  # Each country row is 30px high
 
 			matching_canvas.place(x=input_x, y=input_y - frame_height, width=220, height=frame_height)
 			scrollbar.place(x=input_x + 220, y=input_y - frame_height, width=20, height=frame_height)

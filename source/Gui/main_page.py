@@ -14,18 +14,25 @@ window = Tk()
 window_width = 300
 window_height = 700
 
-# Get the dimensions of the primary monitor
-# primary_monitor = get_monitors()[1]
-# screen_width = primary_monitor.width
-# screen_height = primary_monitor.height
+from screeninfo import get_monitors
 
-# # Calculate position to center the window on the primary monitor
-# x_position = max(0, (screen_width // 2) - (window_width // 2))
-# y_position = max(0, (screen_height // 2) - (window_height // 2))
+# Choose the monitor where you want the window (e.g., primary monitor)
+monitor = get_monitors()[0]  # You can change the index to target a different monitor
 
-# Set the geometry of the window
-# window.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
-window.geometry("300x700")
+# Get monitor position and size
+monitor_x = monitor.x
+monitor_y = monitor.y
+monitor_width = monitor.width
+monitor_height = monitor.height
+
+# Calculate centered window position
+x = monitor_x + (monitor_width - window_width) // 2
+y = monitor_y + (monitor_height - window_height) // 2
+
+# Apply window geometry with position
+window.geometry(f"{window_width}x{window_height}+{x}+{y}")
+
+# window.geometry(f"{window_width}x{window_height}")
 window.configure(bg=globals.background_color)
 window.title("Flagle")
 window.resizable(False, False)

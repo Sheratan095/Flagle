@@ -81,7 +81,7 @@ def render_input_field(input_manager: InputManager):
 			frame_height = visible_count * 30  # Each country row is 30px high
 
 			matching_canvas.place(x=input_x, y=input_y - frame_height, width=220, height=frame_height)
-			scrollbar.place(x=input_x + 220, y=input_y - frame_height, width=20, height=frame_height)
+			scrollbar.place(x=input_x + 220, y=input_y - frame_height, width=17, height=frame_height)
 		else:
 			matching_canvas.place_forget()
 			scrollbar.place_forget()

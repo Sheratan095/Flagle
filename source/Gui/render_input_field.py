@@ -23,6 +23,8 @@ def render_input_field(input_manager: InputManager):
 		insertbackground=globals.input_color,  # Set the cursor color
 		font=("Arial", 10, "bold")  # Set font to bold
 	)
+	input_manager.set_input_field(input_field) # Pass the input field to the InputManager
+
 	input_field.place(
 		x=input_x,
 		y=input_y,
@@ -109,8 +111,13 @@ def render_input_field(input_manager: InputManager):
 
 
 	def on_key_release(event):
-		if (input_field.get() == ""):
+		# Check if the input field is disabled
+		if (input_field.cget("state") == "disabled"):
+			return  # Do nothing if the input field is disabled
+
+		if input_field.get() == "":
 			add_placeholder()
+
 		update_matching_countries()
 
 	# Bind key release to update matching countries
@@ -125,7 +132,12 @@ def render_input_field(input_manager: InputManager):
 		bg=globals.background_color,
 		activebackground=globals.background_color,  # Remove highlight when focused
 		highlightthickness=0,
-		command=lambda: [matching_frame.place_forget(), on_button_click(input_field, input_manager)],  # Hide frame and handle click
+		command=lambda: [
+			matching_frame.place_forget(),
+			# Check if the input field is not disabled before calling on_button_click
+			# This prevents the button from being clickable when the game is over
+			on_button_click(input_field, input_manager) if (input_field.cget("state") != "disabled") else None
+		],
 		relief="flat"
 	)
 

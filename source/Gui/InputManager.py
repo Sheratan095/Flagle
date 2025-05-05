@@ -5,7 +5,7 @@ from PIL import ImageTk
 from typing import List
 import globals
 from Gui.message_label import MessageLabel
-from Gui.end_pages import show_result_screen  # Import the new module
+from Gui.end_pages import show_result_screen
 
 class InputManager:
 

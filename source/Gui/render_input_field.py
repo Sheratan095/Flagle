@@ -1,4 +1,4 @@
-from tkinter import Entry, Button, Frame, Label, Canvas, Scrollbar, ttk
+from tkinter import Entry, Button, Frame, Label, Canvas, ttk
 from Gui.InputManager import InputManager
 import globals
 from PIL import Image, ImageTk
@@ -53,31 +53,25 @@ def render_input_field(input_manager: InputManager):
 	input_field.focus_set()
 
 	# Create a canvas + scrollbar + frame for matching countries
-	matching_canvas = Canvas(
-		bg=globals.background_color,
-		highlightthickness=10,  # Set the border thickness
-		highlightbackground=globals.input_color,  # Set the border color
-		highlightcolor=globals.input_color,  # Set the border color when focused
-		borderwidth=0  # Remove the default border
-	)
+	matching_canvas = Canvas(bg=globals.main_img_background, highlightthickness=0, borderwidth=2)
 
 	style = ttk.Style()
 	style.theme_use("clam")  # Use a theme that allows customization
 	style.configure(
 		"Vertical.TScrollbar",
-		background=globals.background_color,        # The scrollbar "thumb" (the draggable part)
-		troughcolor=globals.background_color,        # The background track
-		bordercolor=globals.background_color,        # Border color (theme-dependent)
+		background=globals.main_img_background,        # The scrollbar "thumb" (the draggable part)
+		troughcolor=globals.main_img_background,        # The background track
+		bordercolor=globals.main_img_background,        # Border color (theme-dependent)
 		arrowcolor=globals.input_color,         # Arrow color (up/down indicators, if visible)
 		relief="flat",                # Border style: flat, groove, ridge, etc.
 		borderwidth=0,             # Border width
-		gripcount=5                   # Number of "grips"/lines on the scrollbar (for mouse dragging)
+		gripcount=3                   # Number of "grips"/lines on the scrollbar (for mouse dragging)
 	)
 
 	scrollbar = ttk.Scrollbar(orient="vertical", style="Vertical.TScrollbar", command=matching_canvas.yview)
 
 	# Configure scrolling
-	matching_frame = Frame(matching_canvas, bg=globals.background_color)
+	matching_frame = Frame(matching_canvas, bg=globals.main_img_background)
 	matching_frame.bind("<Configure>", lambda e: matching_canvas.configure(scrollregion=matching_canvas.bbox("all")))
 	matching_canvas.create_window((0, 0), window=matching_frame, anchor="nw")
 	matching_canvas.configure(yscrollcommand=scrollbar.set)
@@ -101,13 +95,13 @@ def render_input_field(input_manager: InputManager):
 			frame_height = visible_count * 30  # Each country row is 30px high
 
 			matching_canvas.place(x=input_x, y=input_y - frame_height, width=220, height=frame_height)
-			scrollbar.place(x=input_x + 220, y=input_y - frame_height, width=17, height=frame_height)
+			scrollbar.place(x=input_x + 220, y=input_y - frame_height, width=15, height=frame_height)
 		else:
 			matching_canvas.place_forget()
 			scrollbar.place_forget()
 
 		for index, country in enumerate(matching_countries):
-			country_frame = Frame(matching_frame, bg=globals.background_color, height=24)
+			country_frame = Frame(matching_frame, bg=globals.main_img_background, height=24)
 			country_frame.pack(fill="x", pady=1)
 
 			def on_country_click(event, selected_country=country):
@@ -120,7 +114,7 @@ def render_input_field(input_manager: InputManager):
 				country_frame,
 				text=globals.get_fixed_country_name(country.name, 30),
 				fg=globals.input_color,
-				bg=globals.background_color,
+				bg=globals.main_img_background,
 				anchor="w",
 				font=("Arial", 10),
 				width=22  # Set a fixed width for the label
@@ -129,7 +123,7 @@ def render_input_field(input_manager: InputManager):
 
 			flag_image = Image.open(country.get_flag()).resize((32, 24))
 			flag_photo = ImageTk.PhotoImage(flag_image)
-			flag_label = Label(country_frame, image=flag_photo, bg=globals.background_color)
+			flag_label = Label(country_frame, image=flag_photo, bg=globals.main_img_background)
 			flag_label.image = flag_photo
 			flag_label.pack(side="right", padx=2)
 

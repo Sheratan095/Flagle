@@ -37,7 +37,7 @@ class CountriesManager:
 					# longitude=entry["longitude"],
 					name=entry["name"]
 				)
-
+				print(country)
 				self.__countries.append(country)
 		
 		self._get_max_dimensions()

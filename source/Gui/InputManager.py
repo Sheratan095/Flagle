@@ -30,7 +30,6 @@ class InputManager:
 			return
 
 		guess_result: GuessResult = globals.game.guess(guess)
-		print(guess_result.guessed_country)
 
 		if (guess_result.unknown_country):
 			self._message_label.show_message()

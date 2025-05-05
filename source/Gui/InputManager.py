@@ -24,7 +24,7 @@ class InputManager:
 	def add_input(self, input: Input):
 		self._txtboxes.append(input)
 
-	def start_game(self):
+	def restart_game(self):
 		for i in range(len(self._txtboxes)):
 			self._txtboxes[i].clear()
 		self._current_idx = 0

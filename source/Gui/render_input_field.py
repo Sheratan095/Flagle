@@ -55,7 +55,7 @@ def render_input_field(input_manager: InputManager):
 	# Create a canvas + scrollbar + frame for matching countries
 	matching_canvas = Canvas(
 		bg=globals.background_color,
-		highlightthickness=2,  # Set the border thickness
+		highlightthickness=10,  # Set the border thickness
 		highlightbackground=globals.input_color,  # Set the border color
 		highlightcolor=globals.input_color,  # Set the border color when focused
 		borderwidth=0  # Remove the default border

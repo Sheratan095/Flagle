@@ -34,7 +34,7 @@ def render_input_field(input_manager: InputManager):
 
 	# Placeholder functionality
 	def add_placeholder(event=None):
-		if input_field.get() == "":
+		if (input_field.get() == ""):
 			input_field.insert(0, placeholder_text)
 			input_field.config(fg=globals.txtbox_placeholder_color)
 			input_field.icursor(0)
@@ -43,7 +43,7 @@ def render_input_field(input_manager: InputManager):
 		add_placeholder()
 
 	def on_key_press(event):
-		if input_field.get() == placeholder_text:
+		if (input_field.get() == placeholder_text):
 			input_field.delete(0, 'end')
 			input_field.config(fg=globals.input_color)
 
@@ -75,7 +75,7 @@ def render_input_field(input_manager: InputManager):
 
 		matching_countries: list[Country] = globals.game.get_matching_countries(input_field.get())
 
-		if matching_countries:
+		if (matching_countries):
 			max_visible = 10  # Maximum number of countries to display
 			visible_count = min(len(matching_countries), max_visible)
 			frame_height = visible_count * 30  # Each country row is 30px high
@@ -119,9 +119,9 @@ def render_input_field(input_manager: InputManager):
 			flag_label.bind("<Button-1>", on_country_click)
 
 	def on_key_release(event):
-		if input_field.cget("state") == "disabled":
+		if (input_field.cget("state") == "disabled"):
 			return
-		if input_field.get() == "":
+		if (input_field.get() == ""):
 			add_placeholder()
 		update_matching_countries()
 
@@ -155,4 +155,4 @@ def render_input_field(input_manager: InputManager):
 	# Enter key triggers submission
 	input_field.bind("<Return>", lambda event: [matching_canvas.place_forget(), scrollbar.place_forget(), on_button_click(input_field, input_manager)])
 
-	return input_field
+	return (input_field)

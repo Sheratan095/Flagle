@@ -39,5 +39,6 @@ def show_result_screen(canvas_master, message: str, input_manager):
 	).pack(pady=10)
 
 	def _restart_game():
+		result_window.withdraw()  # Hide the end window
 		globals.game.start_game(globals.mode)
 		input_manager.start_game()

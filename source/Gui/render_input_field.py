@@ -125,7 +125,7 @@ def render_input_field(input_manager: InputManager):
 		bg=globals.background_color,
 		activebackground=globals.background_color,  # Remove highlight when focused
 		highlightthickness=0,
-		command=lambda: on_button_click(input_field, input_manager),  # Pass input_field
+		command=lambda: [matching_frame.place_forget(), on_button_click(input_field, input_manager)],  # Hide frame and handle click
 		relief="flat"
 	)
 
@@ -136,5 +136,8 @@ def render_input_field(input_manager: InputManager):
 		width=29.0,
 		height=29.0
 	)
+
+	# Bind Enter key to hide matching frame and trigger button click
+	input_field.bind("<Return>", lambda event: [matching_frame.place_forget(), on_button_click(input_field, input_manager)])
 
 	return (input_field)

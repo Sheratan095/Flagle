@@ -3,7 +3,7 @@
 	"american_states_file": "flags/american_states.json",
 	"number_of_tries": 6,
 	"frontend": {
-		"main_screen_idx": 1,
+		"main_screen_idx": 0,
 		"background_color": "#1D2951",
 		"border_color": "#8A8A8A",
 		"input_color": "#FFFFFF",

@@ -1,6 +1,5 @@
 venv/
 source/__pycache__
 source/Gui/__pycache__
-dist/
 build/
 *.spec
